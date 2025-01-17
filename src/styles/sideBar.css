@@ -14,7 +14,7 @@
 }
 
 .mainContainer {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     height: 100%;
@@ -85,6 +85,7 @@
 .mainContainer .container_scnd>.box img {
     height: 45px;
     width: 45px;
+    margin-left: 10px;
 }
 
 .mainContainer .container_scnd>.drop {
@@ -97,7 +98,7 @@
 }
 
 .mainContainer .container_scnd>.box span {
-    margin-left: 15px;
+    margin-left: 20px;
 }
 
 .mainContainer .container_scnd>.box span p {

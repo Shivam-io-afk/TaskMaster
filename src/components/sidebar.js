@@ -1,4 +1,4 @@
-import '../styles/main.css'
+import '../styles/sideBar.css'
 import MainImg from '../images/profile.png'
 import HanuJi from '../images/hanuman.png'
 import { FaAngleDown } from "react-icons/fa";
