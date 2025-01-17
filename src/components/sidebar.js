@@ -1,19 +1,22 @@
 import '../styles/main.css'
 import MainImg from '../images/profile.png'
+import HanuJi from '../images/hanuman.png'
 import { FaAngleDown } from "react-icons/fa";
 import { FaGear } from "react-icons/fa6";
 import { FaLayerGroup } from 'react-icons/fa';
 import { FaNetworkWired } from 'react-icons/fa';
 import { FaListUl } from 'react-icons/fa';
 import { FaWindows } from 'react-icons/fa6';
-
+import { FaTasks } from 'react-icons/fa';
+import { FaSun } from 'react-icons/fa';
+import { FaMoon } from 'react-icons/fa';
 
 function SideBar() {
-    const imgs = [
-        {usrImg:'../images/hanuman.png'},
-        {usrImg:'../images/lakshmana.png'},
-        {usrImg:'../images/profile.png'},
-    ]
+    // const imgs = [
+    //     { usrImg: '../images/hanuman.png' },
+    //     { usrImg: '../images/lakshmana.png' },
+    //     { usrImg: '../images/profile.png' },
+    // ]
 
     return (
         <div className="mainContainer">
@@ -27,27 +30,63 @@ function SideBar() {
             </div>
             <div className='container_scnd'>
                 <div className='box'>
-                    <img src={MainImg}/>
+                    <img src={MainImg} alt='' />
                     <span>
-                        <p>Mr Profile <FaAngleDown className='icn'/></p>
+                        <p>Mr Profile
+                             {/* <FaAngleDown className='icn' /> */}
+                        </p>
                         <p>xyz@gmail.com</p>
                     </span>
+                </div>
+                <div className='userLists'>
+                    <div className='box'>
+                        <img src={HanuJi} alt='' />
+                        <span>
+                            <p>Mr Profile</p>
+                            <p>xyz@gmail.com</p>
+                        </span>
+                    </div>
+                    <div className='box'>
+                        <img src={HanuJi} alt='' />
+                        <span>
+                            <p>Mr Profile</p>
+                            <p>xyz@gmail.com</p>
+                        </span>
+                    </div>
+                    <div className='box'>
+                        <img src={HanuJi} alt='' />
+                        <span>
+                            <p>Mr Profile</p>
+                            <p>xyz@gmail.com</p>
+                        </span>
+                    </div>
                 </div>
             </div>
             <div className='container_thrd'>
                 <h3>Menu</h3>
                 <div className='options'>
-                    <li>&nbsp;&nbsp;<FaWindows/>&nbsp;&nbsp;&nbsp;&nbsp;<span>Overview</span></li>
-                    <li>&nbsp;&nbsp;<FaListUl/>&nbsp;&nbsp;&nbsp;&nbsp;<span>Task List</span></li>
-                    <li className='active'>&nbsp;&nbsp;<FaNetworkWired/>&nbsp;&nbsp;&nbsp;&nbsp;<span>Project Overview</span></li>
-                    <li>&nbsp;&nbsp;<FaLayerGroup/>&nbsp;&nbsp;&nbsp;&nbsp;<span>Categories</span></li>
-                    <li>&nbsp;&nbsp;<FaGear/>&nbsp;&nbsp;&nbsp;&nbsp;<span>Settings</span></li>
+                    <li><FaWindows className='incs' /><span>Overview</span></li>
+                    <li><FaListUl className='incs' /><span>Task List</span></li>
+                    <li className='active'><FaNetworkWired className='incs' /><span>Project Overview</span></li>
+                    <li><FaLayerGroup className='incs' /><span>Categories</span></li>
+                    <li><FaGear className='incs' /><span>Settings</span></li>
                 </div>
             </div>
             <div className='container_frth'>
-                
+                <h3>List <FaAngleDown className='icns' /></h3>
+                <div className='options'>
+                    <li><FaTasks className='incs' />😎 Personal</li>
+                    <li><FaTasks className='incs' />🎨 Design</li>
+                    <li><FaTasks className='incs' />💻 Development</li>
+                    <li><FaTasks className='incs' />📖 Research</li>
+                </div>
             </div>
-        </div> 
+            <div className='buttons_cntr'>
+                <li><FaSun className='icns'/>Light</li>
+                <li><FaMoon className='icns'/>Dark</li>
+                <li className='active'></li>
+            </div>
+        </div>
     )
 }
 
