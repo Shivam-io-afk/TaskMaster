@@ -15,13 +15,13 @@ function MyVantaComponent() {
       touchControls: false,
       minHeight: 200.00,
       minWidth: 200.00,
-      highlightColor: '#ffaf64',
-      midtoneColor: '#ffaf64',
-      lowlightColor: '#ffaf64',
+      highlightColor: '#ffcea8',
+      midtoneColor: '#ffcea8',
+      lowlightColor: '#ffcea8',
       baseColor: 0xffffff,
       zoom:0.5,
       scale: 4,
-      speed: 1.5
+      speed: 2.0
     });
 
     return () => {
