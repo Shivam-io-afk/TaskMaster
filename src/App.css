@@ -38,7 +38,7 @@
   position: relative;
   top: 0;
   right: 0;
-  height: 200px;
+  height: 150px;
   width: 100%;
   background-size: cover;
   background-position: bottom;
@@ -52,7 +52,7 @@
   top: 54%;
   left: 50%;
   transform: translate(-50%,-50%);
-  height: 100%;
+  height: 99%;
   width: 99%;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 9px;
@@ -117,7 +117,126 @@
 
 .App .midBanner{
   position: relative;
-  height: 300px;
+  height: 200px;
   width: 100%;
-  border: 1px solid red;
+  display: flex;
+}
+
+.App .midBanner > div{
+  height: 100%;
+  width: 50%;  
+  padding: 4px 0;
+  padding-left: 10px;
+
+}
+
+
+
+
+
+/* ------------------------------------------------------------------ */
+
+
+.App .midBanner .container_left table {
+  position: absolute;
+  width: 50%;
+  border-collapse: collapse;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+.App .midBanner .container_left th{
+  color: #727272;
+  font-weight: 300;
+}
+.App .midBanner .container_left th, td {
+  padding: 8px;
+  text-align: left;
+  font-size: 14px;
+  font-family: var(--font2);
+  cursor: default;
+}
+
+.App .midBanner .container_left .tfcs{
+  font-size: 13px;
+  height: 30px;
+  margin-left: 2px;
+  padding: 8px 10px;
+  border-radius: 9px;
+  background-color: #cecece98;
+}
+
+.App .midBanner .container_left .dt_org{
+  font-size: 13px;
+  padding-left: 10px;
+}
+
+.App .midBanner .container_left .tags span {
+  display: inline-block;
+  margin: 2px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: black;
+  font-size: 12px;
+  height: 30px;
+  padding: 8px 10px;
+  border-radius: 9px;
+}
+
+
+.App .midBanner .container_left .tags .meetings { background-color: #f48a0078; }
+.App .midBanner .container_left .tags .ui-design { background-color: #fbbd047c; }
+.App .midBanner .container_left .tags .development { background-color: #4286f489; }
+.App .midBanner .container_left .tags .ux-research { background-color: #34a8538b; }
+
+.App .midBanner .container_left .assignees span {
+  display: inline-block;
+  margin: 2px;
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 9px;
+  font-size: 12px;
+}
+
+/* ------------------------------------------------------------------ */
+
+
+
+
+
+
+
+.App .midBanner .container_right .input_area{
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  height: 38px;
+  width: 250px;
+  border: 2px solid #d3d3d3c8;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+}
+
+.App .midBanner .container_right .input_area input{
+  height: 100%;
+  width: 90%;
+  outline: none;
+  padding-left: 15px;
+  border: none;
+  border-radius: 9px;
+  font-size: 12px;
+}
+
+.App .midBanner .container_right .input_area input::placeholder{
+  font-size: 12px;
+  color: #999;
+}
+
+
+.App .midBanner .container_right .input_area .incs{
+  font-size: 12px;
+  margin-left: 5px;
+  color: #999;
+  cursor: pointer;
 }
