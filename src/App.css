@@ -42,6 +42,8 @@
   width: 100%;
   background-size: cover;
   background-position: bottom;
+  display: flex;
+  flex-direction: column;
 }
 
 .App .topBanner::after{
@@ -58,6 +60,49 @@
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  
   z-index: 5;
+}
+
+
+.App .topBanner .context{
+  position: absolute;
+  bottom: 0;
+  color:#2B2928 ;
+  font-family: var(--font2);
+  width: 99%;
+  align-self: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  padding: 0 5px;
+}
+
+.App .topBanner .context p:nth-child(1){
+  font-size:35px;
+}
+.App .topBanner .context p:nth-child(1) .incs{
+  font-size: 13px;
+  margin-left: 10px;
+}
+.App .topBanner .context p:nth-child(2){
+  height: 24px;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+  user-select: none;
+}
+
+.App .topBanner .context p > .incs{
+  margin-right: 5px;
+}
+
+
+.App .topBanner .context .dir_span{
+  position: absolute;
+  bottom: 45px;
+  font-size: 13px;
+  user-select: none;
 }

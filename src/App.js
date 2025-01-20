@@ -1,7 +1,8 @@
 import './App.css';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import MyComponent from './components/vanta';
-
+import { FaCalendarAlt } from 'react-icons/fa';
+import { FaRegEdit } from 'react-icons/fa';
 
 function App() {
   useEffect(() => {
@@ -42,7 +43,11 @@ function App() {
     <div className="App">
       <div className='topBanner'>
         <MyComponent/>
-          
+          <div className='context'>
+              <p>My Project <FaRegEdit className='incs' style={{cursor:"pointer"}}/></p>
+              <p><FaCalendarAlt className='incs'/>19 Mar 2003</p>
+              <span className='dir_span'>Dashboard / Project Overview</span>
+          </div>
       </div>
     </div>
   );

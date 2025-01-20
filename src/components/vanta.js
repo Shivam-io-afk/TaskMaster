@@ -20,7 +20,8 @@ function MyVantaComponent() {
       lowlightColor: '#ffaf64',
       baseColor: 0xffffff,
       zoom:0.5,
-      scale: 4
+      scale: 4,
+      speed: 1.5
     });
 
     return () => {
