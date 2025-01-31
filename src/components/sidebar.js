@@ -75,10 +75,10 @@ function SideBar() {
             <div className='container_frth'>
                 <h3>List <FaAngleDown className='icns' /></h3>
                 <div className='options'>
-                    <li><FaTasks className='incs' />😎 Personal</li>
-                    <li><FaTasks className='incs' />🎨 Design</li>
-                    <li><FaTasks className='incs' />💻 Development</li>
-                    <li><FaTasks className='incs' />📖 Research</li>
+                    <li><FaTasks className='incs' /> Personal</li>
+                    <li><FaTasks className='incs' /> Design</li>
+                    <li><FaTasks className='incs' /> Development</li>
+                    <li><FaTasks className='incs' /> Research</li>
                 </div>
             </div>
             <div className='buttons_cntr'>
