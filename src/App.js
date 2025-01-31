@@ -5,6 +5,9 @@ import { FaCalendarAlt } from 'react-icons/fa';
 import { FaRegEdit } from 'react-icons/fa';
 import SubsectionApp from './components/SubSection_App';
 import SubSection from './components/SubSection';
+import TaskPortion from './components/TaskPortion';
+
+
 
 function App() {
   useEffect(() => {
@@ -53,7 +56,7 @@ function App() {
       </div>
       <SubsectionApp />
       <SubSection />
-      
+      <TaskPortion/>
     </div>
   );
 }

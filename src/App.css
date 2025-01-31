@@ -226,11 +226,12 @@
   padding-left: 15px;
   border: none;
   border-radius: 9px;
-  font-size: 12px;
+  font-size: 13px;
+  text-transform: capitalize;
 }
 
 .App .midBanner .container_right .input_area input::placeholder{
-  font-size: 13px;
+  font-size: 14px;
   color: #999;
 }
 
@@ -389,4 +390,52 @@
   margin-right: -10px;
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
+}
+
+
+
+
+
+.App .taskcontainer{
+  height: 378px;
+  width: 100%;
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  overflow: hidden;
+}
+
+.App .taskcontainer .main_tskcnt{
+  height: 100%;
+  width: 100%;
+  background-color: #F9F9F9;
+  border-radius: 10px;
+  display: flex;
+}
+
+
+.App .taskcontainer .main_tskcnt .cnt{
+  height: 100%;
+  width: calc(100% / 4);
+  overflow: hidden hidden;
+  margin: 0 5px;
+  padding: 10px 0;
+  border-radius: 10px;
+}
+
+.App .taskcontainer .main_tskcnt .cnt .indicator{
+  height: 35px;
+  width: 100%;
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+.App .taskcontainer .main_tskcnt .cnt .slider_bx{
+  height: 90%;
+  width: 100%;
+  border: 1px solid red;
+  margin-top: 5px;
+  overflow: hidden;
 }
