@@ -19,9 +19,9 @@ function MyVantaComponent() {
       midtoneColor: '#ffcea8',
       lowlightColor: '#ffcea8',
       baseColor: 0xffffff,
-      zoom:0.8,
+      zoom:0.4,
       scale: 4,
-      speed: 2.5
+      speed: 4.0
     });
 
     return () => {
