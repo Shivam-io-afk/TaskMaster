@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Fjalla+One&family=Gabarito:wght@400..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Fjalla+One&family=Gabarito:wght@100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@200..700&display=swap');
 
 
 * {
@@ -55,7 +55,7 @@
   transform: translate(-50%,-50%);
   height: 102%;
   width: 100.5%;
-  background: rmgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 9px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
@@ -298,7 +298,7 @@
 }
 
 .App .box_container .btn_tsk button .incs{
-  font-size: 15px;
+  font-size: 14px;
 }
 
 
@@ -423,19 +423,113 @@
   margin: 0 5px;
   padding: 10px 0;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .App .taskcontainer .main_tskcnt .cnt .indicator{
   height: 35px;
-  width: 100%;
-  border-radius: 6px;
+  width: 99%;
+  border-radius: 9px;
   background-color: #fff;
+  box-shadow: 0px 0px 2px 1px #ddd;
+  line-height: 35px;
+  font-size: 13px;
+  padding: 0 10px;
 }
 
 .App .taskcontainer .main_tskcnt .cnt .slider_bx{
   height: 90%;
-  width: 100%;
-  border: 1px solid red;
+  width: 99%;
   margin-top: 5px;
+  overflow: hidden scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.App .taskcontainer .main_tskcnt .cnt .slider_bx .T_blocks{
+  position: relative;
+  min-height: 150px;
+  width: 100%;
+  margin-bottom: 7px ;
+  border-radius: 10px;
+  padding: 8px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+  cursor: pointer;
   overflow: hidden;
+  scroll-snap-align: end; 
+}
+
+.App .taskcontainer .main_tskcnt .cnt .slider_bx .T_blocks > div{
+  height: 20px;
+  border-radius: 3px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.App .taskcontainer .main_tskcnt .cnt .slider_bx .T_blocks .titlee{
+  /* border: 1px solid ; */
+  min-height: 100px;
+  font-size: 33px;
+  letter-spacing: -0.5px;
+  /* color: currentColor; */
+  padding-top: 6px;
+  color: #000;
+  margin: -10px 0;
+  font-family: var(--font2);
+}
+
+.App .taskcontainer .main_tskcnt .cnt .slider_bx .T_blocks > div span{
+  font-size: 14px;
+}
+
+.App .taskcontainer .main_tskcnt .cnt .slider_bx .T_blocks > div:last-child span{
+  color: #797979;
+  font-size: 13px;
+}
+
+.App .taskcontainer .main_tskcnt .cnt .slider_bx .T_blocks > div .icns{
+  transform: rotate(-45deg);
+  color: #999999;
+  font-size: 20px;
+}
+
+.bg_1{
+  background-color:rgb(255, 243, 209);
+}
+
+.bg_2{
+  background-color: rgb(217, 254, 220);
+}
+
+.bg_3{
+  background-color: rgb(217, 245, 254);
+}
+
+.bg_4{
+  background-color: rgba(239,239,239);
+}
+
+.App .taskcontainer .main_tskcnt .cnt .slider_bx::-webkit-scrollbar {
+  width: 0.5px;
+}
+
+/* Track */
+.App .taskcontainer .main_tskcnt .cnt .slider_bx::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.App .taskcontainer .main_tskcnt .cnt .slider_bx::-webkit-scrollbar-thumb {
+  background: none;
+}
+
+/* Handle on hover */
+.App .taskcontainer .main_tskcnt .cnt .slider_bx::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
