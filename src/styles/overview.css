@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Fjalla+One&family=Gabarito:wght@400..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@200..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --font1: "Kanit", serif;
+    --font2: "Gabarito", serif;
+    --font3: "Oswald", serif;
+    --font4: "Josefin Sans", serif;
+}
+
+
+.mainBx {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 0 15px;
+    padding-top: 25px;
+}
+
+.mainBx .contFrst{
+    border: 1px solid ;
+}
+.mainBx h1 {
+    font-family: var(--font2);
+    font-size: 30px;
+    font-weight: 500;
+    color:rgb(248, 152, 10);
+    user-select: none;
+}
+
+.mainBx .wave {
+    font-family: sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.mainBx .handing {
+    margin-top: 0px;
+    font-size: 30px;
+    display: inline-block;
+    background-color: transparent;
+    transform-origin: bottom;
+    animation-name: wave ;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+    opacity: 0;
+}
+
+
+@keyframes wave {
+    0% {
+        transform: rotate(-1.0deg);
+        opacity: 1;
+    }
+    10% {
+        transform: rotate(14.0deg);
+        opacity: 1;
+    }
+    20% {
+        transform: rotate(-8.0deg);
+        opacity: 1;
+    }
+    30% {
+        transform: rotate(14.0deg);
+        opacity: 1;
+    }
+    40% {
+        transform: rotate(-4.0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: rotate(10.0deg);
+        opacity: 1;
+    }
+    60% {
+        transform: rotate( 0.0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: rotate( 0.0deg);
+        opacity: 0;
+    }
+}
+
+
+.mainBx .usrDetail .chldchart{
+    margin-top: 40px;
+    height: 300px;
+    width: 580px;
+    background-color: #F9F9F9;
+    border-radius: 20px;
+    border: 1px solid transparent;
+}
+
+
+.mainBx .usrDetail .chldchart .chartStats{
+    margin-top: 30px;
+    margin-left: -20px;
+}

@@ -23,14 +23,14 @@ const subsection = () => {
                             <span class="ux-research">UX Research</span>
                         </td>
                     </tr>
-                    <tr>
+                    {/* <tr>
                         <th>Assignees</th>
                         <td class="assignees">
                             <span>Alpha</span>
                             <span>Studio</span>
                             <span>+2 more</span>
                         </td>
-                    </tr>
+                    </tr> */}
                 </table>
             </div>
             <div className='container_right'>
