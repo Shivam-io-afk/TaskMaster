@@ -10,8 +10,6 @@ const tasks = () => {
                 <div className="cnt w_fr">
                     <div className="indicator">Todo</div>
                     <div className="slider_bx">
-
-                        
                         <div className='T_blocks bg_1'>
                             <div>
                                 <span><FaStar style={{color:"orange"}}/> Today</span>
@@ -19,7 +17,7 @@ const tasks = () => {
                             </div>
                             <span className='titlee'>Create A visual Style Guide</span>
                             <div>
-                                <span>9:00 - 9:30</span>
+                                <span className='time'>9:00 - 9:30</span>
                                 <div>
                                     <span></span>
                                     <span></span>

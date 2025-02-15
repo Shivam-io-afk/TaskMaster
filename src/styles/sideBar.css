@@ -241,6 +241,11 @@
     align-items: center;
     cursor: pointer;
     border-radius: 6px;
+    text-decoration: none;
+}
+
+.mainContainer .container_thrd .options a{
+    text-decoration: none;
 }
 
 .mainContainer .container_thrd .options li .incs {

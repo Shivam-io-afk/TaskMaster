@@ -10,6 +10,8 @@ import { FaWindows } from 'react-icons/fa6';
 import { FaTasks } from 'react-icons/fa';
 import { FaSun } from 'react-icons/fa';
 import { FaMoon } from 'react-icons/fa';
+import { BrowserRouter as Router, NavLink, Route, Routes } from 'react-router-dom';
+
 
 function SideBar() {
     // const imgs = [
@@ -33,7 +35,7 @@ function SideBar() {
                     <img src={MainImg} alt='' />
                     <span>
                         <p>Mr Profile
-                             {/* <FaAngleDown className='icn' /> */}
+                            {/* <FaAngleDown className='icn' /> */}
                         </p>
                         <p>xyz@gmail.com</p>
                     </span>
@@ -65,11 +67,11 @@ function SideBar() {
             <div className='container_thrd'>
                 <h3>Menu</h3>
                 <div className='options'>
-                    <li><FaWindows className='incs' /><span>Overview</span></li>
-                    <li><FaListUl className='incs' /><span>Task List</span></li>
-                    <li className='active'><FaNetworkWired className='incs' /><span>Project Overview</span></li>
-                    <li><FaLayerGroup className='incs' /><span>Categories</span></li>
-                    <li><FaGear className='incs' /><span>Settings</span></li>
+                    <NavLink to={'/Overview'}><li><FaWindows className='incs' /><span>Overview</span></li></NavLink>
+                    <NavLink to={'/Tasklist'}><li><FaListUl className='incs' /><span>Task List</span></li></NavLink>
+                    <NavLink to={'./ProjectOverview'}><li className='active'><FaNetworkWired className='incs' /><span>Project Overview</span></li></NavLink>
+                    <NavLink to={'./Categories'}><li><FaLayerGroup className='incs' /><span>Categories</span></li></NavLink>
+                    <NavLink to={'./Setting'}><li><FaGear className='incs' /><span>Settings</span></li></NavLink>
                 </div>
             </div>
             <div className='container_frth'>
@@ -82,8 +84,8 @@ function SideBar() {
                 </div>
             </div>
             <div className='buttons_cntr'>
-                <li><FaSun className='icns'/>Light</li>
-                <li><FaMoon className='icns'/>Dark</li>
+                <li><FaSun className='icns' />Light</li>
+                <li><FaMoon className='icns' />Dark</li>
                 <li className='active'></li>
             </div>
         </div>
