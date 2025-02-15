@@ -10,7 +10,7 @@ import { FaWindows } from 'react-icons/fa6';
 import { FaTasks } from 'react-icons/fa';
 import { FaSun } from 'react-icons/fa';
 import { FaMoon } from 'react-icons/fa';
-import { BrowserRouter as Router, NavLink, Route, Routes } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 function SideBar() {
@@ -67,11 +67,11 @@ function SideBar() {
             <div className='container_thrd'>
                 <h3>Menu</h3>
                 <div className='options'>
-                    <NavLink to={'/Overview'}><li><FaWindows className='incs' /><span>Overview</span></li></NavLink>
-                    <NavLink to={'/Tasklist'}><li><FaListUl className='incs' /><span>Task List</span></li></NavLink>
-                    <NavLink to={'./ProjectOverview'}><li className='active'><FaNetworkWired className='incs' /><span>Project Overview</span></li></NavLink>
-                    <NavLink to={'./Categories'}><li><FaLayerGroup className='incs' /><span>Categories</span></li></NavLink>
-                    <NavLink to={'./Setting'}><li><FaGear className='incs' /><span>Settings</span></li></NavLink>
+                    <NavLink to={'/'}><li className='active'><FaWindows className='incs' /><span>Overview</span></li></NavLink>
+                    <NavLink to={'/tasklist'}><li><FaListUl className='incs' /><span>Task List</span></li></NavLink>
+                    <NavLink to={'./project'}><li><FaNetworkWired className='incs' /><span>Project Overview</span></li></NavLink>
+                    <NavLink to={'./categories'}><li><FaLayerGroup className='incs' /><span>Categories</span></li></NavLink>
+                    <NavLink to={'./setting'}><li><FaGear className='incs' /><span>Settings</span></li></NavLink>
                 </div>
             </div>
             <div className='container_frth'>

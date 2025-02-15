@@ -227,6 +227,7 @@
 
 .mainContainer .container_thrd .options {
     position: relative;
+    overflow: hidden;
 }
 
 .mainContainer .container_thrd .options li {

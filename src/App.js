@@ -1,4 +1,5 @@
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import MyComponent from './components/vanta';
 import { FaCalendarAlt } from 'react-icons/fa';
@@ -6,7 +7,7 @@ import { FaRegEdit } from 'react-icons/fa';
 import SubsectionApp from './components/SubSection_App';
 import SubSection from './components/SubSection';
 import TaskPortion from './components/TaskPortion';
-import { Route, Router } from 'react-router';
+import Overview from './components/Ovr';
 
 
 function App() {
@@ -46,22 +47,67 @@ function App() {
 
   return (
     <div className="App">
-      <>
-        <div className='topBanner'>
-          <MyComponent />
-          <div className='context'>
-            <p>My Project<FaRegEdit className='incs' style={{ cursor: "pointer" }} /></p>
-            <p><FaCalendarAlt className='incs' />19 Mar 2025</p>
-            <span className='dir_span'><span>Dashboard</span><b> / </b><span>Project Overview</span></span>
-          </div>
-        </div>
-        <SubsectionApp />
-        <SubSection />
-        <TaskPortion />
-      </>
+      <Routes>
+        <Route path='/' element={<Page1/>}></Route>
+        <Route path='/tasklist' element={<Page2/>}></Route>
+        <Route path='/project' element={<Page3/>}></Route>
+        <Route path='/categories' element={<Page4/>}></Route>
+      </Routes>
     </div>
   );
 }
+
+
+
+
+
+
+const Page1 = () => {
+  return(
+      <>
+          <Overview/>
+      </>
+  );
+}
+
+const Page2 = () => {
+  return(
+      <>
+          <h1>This is Tasklist Page</h1>
+      </>
+  );
+}
+
+
+
+
+const Page3 = () => {
+  return (
+    <>
+      <div className='topBanner'>
+        <MyComponent />
+        <div className='context'>
+          <p>My Project<FaRegEdit className='incs' style={{ cursor: "pointer" }} /></p>
+          <p><FaCalendarAlt className='incs' />19 Mar 2025</p>
+          <span className='dir_span'><span>Dashboard</span><b> / </b><span>Project Overview</span></span>
+        </div>
+      </div>
+      <SubsectionApp />
+      <SubSection />
+      <TaskPortion />
+    </>
+  )
+}
+
+
+const Page4 = () => {
+  return(
+      <>
+          <h1>This is Categories Page</h1>
+      </>
+  );
+}
+
 
 export default App;
 
