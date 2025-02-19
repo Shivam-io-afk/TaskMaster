@@ -6,7 +6,7 @@ const data = [
   { name: 'Mon', task: 90 },
   { name: 'Tue', task: 12 },
   { name: 'Wed', task: 67 },
-  { name: 'Thur', task: 88 },
+  { name: 'Thu', task: 88 },
   { name: 'Fri', task: 23 },
   { name: 'Sat', task: 56 }
 ];
@@ -30,11 +30,11 @@ export default function ChartStats() {
       <CartesianGrid strokeDasharray="1 5" />
       <XAxis
         dataKey="name"
-        tick={{ dx: 10, dy:10, fill: '#999', fontSize: 10, angle: 0, textAnchor: "end" }}
+        tick={{ dx: 10, dy:10, fill: '#999', fontSize: 12, angle: 0, textAnchor: "end" }}
         padding={{ left: 0, right: 0 }}
         axisLine={false} tickLine={false}
       />
-      <YAxis tick={{ dx: -10, fontSize: 9 }} scale="auto" axisLine={false} tickLine={false} />
+      <YAxis tick={{ dx: -10, fontSize: 12 }} scale="auto" axisLine={false} tickLine={false} />
       <Tooltip contentStyle={{
         border: 'none',
         borderRadius: '8px',
