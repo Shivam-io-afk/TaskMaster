@@ -1,0 +1,57 @@
+/* Make the background white */
+.fc .fc-timegrid {
+  background-color: white !important;
+}
+
+/* Customize event styling */
+.fc-event {
+  border-radius: 12px !important;
+  padding: 5px;
+  font-size: 14px;
+}
+
+/* Style the current time indicator */
+.fc-now-indicator {
+  border-top: 2px dashed #333 !important;
+}
+
+.fc-license-message {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0px !important;
+  overflow: hidden !important;
+}
+
+::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888 !important;
+  border-radius: 10px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555 !important;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f0f0 !important; 
+  border-radius: 10px !important;
+}
+
+
+.fc-timegrid-now-indicator-line {
+  border-top: 2px solid red !important;
+}
+
+.fc-timegrid-now-indicator-arrow {
+  border-top-color: red !important;
+}
+
+.fc-timegrid-slot {
+  height: 80px !important; /* Increase row height */
+}
+
+

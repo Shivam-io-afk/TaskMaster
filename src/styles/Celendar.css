@@ -9,23 +9,36 @@
 
 
 .wrapper {
+  position: relative;
+  top: 23px;
+  right: 25px;
   background: #fff;
   font-family: var(--fon2);
-  border-radius:10px;
+  border-radius:15px;
   transform: scale(0.9);
   background-color: #F9F9F9;
   height: 330px;
+  width: 400px;
+  user-select: none;
+  overflow: hidden;
 }
+
+.calendar {
+  height: 260px;
+  width: 100%;
+  padding: 10px;
+}
+
 
 .wrapper header {
   display: flex;
   height: 50px;
-  margin-top: 40px;
   align-items: center;
-  /* padding: 25px 30px 10px; */
   font-family: var(--fon2);
   justify-content: space-between;
   padding: 0 20px;
+  border-radius:15px;
+  margin-bottom: 10px;
 }
 
 header .current-date {
@@ -41,19 +54,14 @@ header .icons span {
   border-radius:50px;
   font-weight:800;
   cursor: pointer;
-
 }
 
 header .icons span:hover {
-  background: #f3f3f3;
+  background: #e6e1e1;
 }
 
 header .icons span:last-child {
   margin-right: -10px;
-}
-
-.calendar {
-  padding: 10px;
 }
 
 .calendar ul {
@@ -65,12 +73,10 @@ header .icons span:last-child {
 }
 
 .calendar .weeks li {
-  font-weight: 400;
+  font-weight: 600;
 }
 
-.calendar .days {
-  /* margin-bottom:30px; */
-}
+
 
 .calendar .days li {
   margin-top:19px;

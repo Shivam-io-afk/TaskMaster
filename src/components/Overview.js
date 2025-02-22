@@ -1,12 +1,13 @@
-import Clock from './Clock';
+// import Clock from './Clock';
 import ChartStats from './charts/ChartStats';
 import ChartCategory from './charts/ChartCateg';
 import '../styles/overview.css';
 import { FaRegBell } from 'react-icons/fa';
 import Calendar from './Celn';
+// import ComponentScheduler from './charts/Scheduler';
+import ComponentScheduler from './charts/ScheduleFullCal';
 
-function MainPagge() {
-
+function MainPage() {
     return (
         <div className="mainBx">
             <div className='contFrst'>
@@ -27,7 +28,7 @@ function MainPagge() {
                                     <li className='active'></li>
                                 </div>
                             </div>
-                            <ChartStats />
+                            <ChartStats /> 
                         </div>
                     </div>
 
@@ -38,8 +39,8 @@ function MainPagge() {
                             </div>
                             <ChartCategory/>
                             <div className='indicator'>
-                                <li>Completed</li>
                                 <li>Remains</li>
+                                <li>Completed</li>
                             </div>
                         </div>
                     </div>
@@ -51,10 +52,14 @@ function MainPagge() {
                     {/* <Clock className="clockstyles"/> */}
                 </div>
             </div>
+
+            <div className='DateTimeGrid'>
+                <ComponentScheduler/>
+            </div>
         </div>
     );
 }
 
 
 
-export default MainPagge;
+export default MainPage;

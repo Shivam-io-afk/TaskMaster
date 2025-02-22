@@ -7,7 +7,7 @@ import { FaRegEdit } from 'react-icons/fa';
 import SubsectionApp from './components/SubSection_App';
 import SubSection from './components/SubSection';
 import TaskPortion from './components/TaskPortion';
-import Overview from './components/Ovr';
+import OverviewPage from './components/Overview';
 
 
 function App() {
@@ -65,7 +65,7 @@ function App() {
 const Page1 = () => {
   return(
       <>
-          <Overview/>
+          <OverviewPage/>
       </>
   );
 }
