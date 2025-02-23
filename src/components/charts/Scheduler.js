@@ -21,7 +21,7 @@ function SchedulerComponent() {
   }, []);
 
   // Mocked scheduler data (moved above usage)
-  const mockedSchedulerData: SchedulerData = [
+  const mockedSchedulerData : SchedulerData = [
     {
       id: "070ac5b5-8369-4cd2-8ba2-0a209130cc60",
       label: {

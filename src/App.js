@@ -51,7 +51,7 @@ function App() {
         <Route path='/home' element={<Page1/>}></Route>
         <Route path='/' element={<Page2/>}></Route>
         <Route path='/project' element={<Page3/>}></Route>
-        <Route path='/categories' element={<Page4/>}></Route>
+        <Route path='/meet' element={<Page4/>}></Route>
       </Routes>
     </div>
   );
@@ -69,6 +69,7 @@ const Page1 = () => {
       </>
   );
 }
+
 
 const Page2 = () => {
   return(

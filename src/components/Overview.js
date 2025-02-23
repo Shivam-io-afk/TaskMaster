@@ -15,7 +15,7 @@ import Stack from '@mui/material/Stack';
 
 
 function MainPage() {
-
+//ToolTip or Notification Section
     const HtmlTooltip = styled(({ className, ...props }) => (
         <Tooltip {...props} classes={{ popper: className }} />
     ))(({ theme }) => ({
@@ -36,7 +36,7 @@ function MainPage() {
                     <h1>Hello, <span> Joseph</span>
                         <span className='handing'>✋🏼</span>
                     </h1>
-                    <HtmlTooltip style={{ position: "absolute", right: "-10px", zIndex: "5" }}
+                    <HtmlTooltip   placement="left" style={{ position: "absolute", right: "-10px", zIndex: "5" }}
                         title={
                             <>
                                 <Typography color="inherit">No Any Updates</Typography>

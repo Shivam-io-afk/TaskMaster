@@ -72,8 +72,8 @@ function SideBar() {
                     <NavLink to={'/home'}><li className=''><FaWindows className='incs' /><span>Overview</span></li></NavLink>
                     <NavLink to={'/'}><li className='active'><FaListUl className='incs' /><span>Task List</span></li></NavLink>
                     <NavLink to={'/project'}><li><FaNetworkWired className='incs' /><span>Project Overview</span></li></NavLink>
-                    {/* <NavLink to={'/categories'}><li><FaLayerGroup className='incs' /><span>Categories</span></li></NavLink> */}
-                    <NavLink to={'/setting'}><li><FaGear className='incs' /><span>Settings</span></li></NavLink>
+                    <NavLink to={'/meet'}><li><FaLayerGroup className='incs' /><span>Create Meeting</span></li></NavLink>
+                    <li><FaGear className='incs' /><span>Settings</span></li>
                 </div>
             </div>
             {/* <div className='container_frth'>

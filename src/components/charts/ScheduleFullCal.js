@@ -23,9 +23,9 @@ const Scheduler = () => {
                 selectable={true}
                 resourceAreaHeaderContent="Today's"
                 resources={[
-                    { id: "1", title: "John Doe", eventColor: colorArr[0] },
-                    { id: "2", title: "Jane Smith", eventColor: colorArr[1] },
-                    { id: "3", title: "Mark Taylor", eventColor: colorArr[2] }
+                    { id: "1", title: "Jhon Cena", eventColor: colorArr[0] },
+                    { id: "2", title: "Randy Orton", eventColor: colorArr[1] },
+                    { id: "3", title: "Triple H", eventColor: colorArr[2] }
                 ]}
                 events={[
                     { id: "1", resourceId: "1", title: "Research landing page", start: "2025-02-23T02:00:00", end: "2025-02-23T10:00:00" },

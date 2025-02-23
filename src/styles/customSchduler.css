@@ -11,21 +11,6 @@
   margin-bottom: 10px !important; 
 }
 
-.fc-now-indicator-arrow {
-  border-top: 8px solid blue !important;  /* Change color */
-  border-left: 6px solid transparent !important;
-  border-right: 6px solid transparent !important;
-  transform: scale(1.5); /* Make it larger */
-}
-
-.fc-now-indicator-arrow {
-  /* background: url('your-arrow-image.png') no-repeat center; */
-  width: 20px;
-  height: 20px;
-  border: none;
-}
-
-
 
 /* Style the current time indicator */
 .fc-now-indicator {
