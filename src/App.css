@@ -519,20 +519,20 @@
 }
 
 .App .taskcontainer .main_tskcnt .cnt .slider_bx::-webkit-scrollbar {
-  width: 0.5px;
+  width: 0.5px !important;
 }
 
 /* Track */
 .App .taskcontainer .main_tskcnt .cnt .slider_bx::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #f1f1f1 !important;
 }
 
 /* Handle */
 .App .taskcontainer .main_tskcnt .cnt .slider_bx::-webkit-scrollbar-thumb {
-  background: none;
+  background: none !important;
 }
 
 /* Handle on hover */
 .App .taskcontainer .main_tskcnt .cnt .slider_bx::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #555 !important;
 }

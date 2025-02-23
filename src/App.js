@@ -48,8 +48,8 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path='/' element={<Page1/>}></Route>
-        <Route path='/tasklist' element={<Page2/>}></Route>
+        <Route path='/home' element={<Page1/>}></Route>
+        <Route path='/' element={<Page2/>}></Route>
         <Route path='/project' element={<Page3/>}></Route>
         <Route path='/categories' element={<Page4/>}></Route>
       </Routes>

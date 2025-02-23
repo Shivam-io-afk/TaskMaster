@@ -20,6 +20,8 @@ function SideBar() {
     //     { usrImg: '../images/profile.png' },
     // ]
 
+
+
     return (
         <div className="mainContainer">
             <div className='container_fr'>
@@ -67,14 +69,14 @@ function SideBar() {
             <div className='container_thrd'>
                 <h3>Menu</h3>
                 <div className='options'>
-                    <NavLink to={'/'}><li className='active'><FaWindows className='incs' /><span>Overview</span></li></NavLink>
-                    <NavLink to={'/tasklist'}><li><FaListUl className='incs' /><span>Task List</span></li></NavLink>
-                    <NavLink to={'./project'}><li><FaNetworkWired className='incs' /><span>Project Overview</span></li></NavLink>
-                    <NavLink to={'./categories'}><li><FaLayerGroup className='incs' /><span>Categories</span></li></NavLink>
-                    <NavLink to={'./setting'}><li><FaGear className='incs' /><span>Settings</span></li></NavLink>
+                    <NavLink to={'/home'}><li className=''><FaWindows className='incs' /><span>Overview</span></li></NavLink>
+                    <NavLink to={'/'}><li className='active'><FaListUl className='incs' /><span>Task List</span></li></NavLink>
+                    <NavLink to={'/project'}><li><FaNetworkWired className='incs' /><span>Project Overview</span></li></NavLink>
+                    {/* <NavLink to={'/categories'}><li><FaLayerGroup className='incs' /><span>Categories</span></li></NavLink> */}
+                    <NavLink to={'/setting'}><li><FaGear className='incs' /><span>Settings</span></li></NavLink>
                 </div>
             </div>
-            <div className='container_frth'>
+            {/* <div className='container_frth'>
                 <h3>List <FaAngleDown className='icns' /></h3>
                 <div className='options'>
                     <li><FaTasks className='incs' /> Personal</li>
@@ -82,7 +84,7 @@ function SideBar() {
                     <li><FaTasks className='incs' /> Development</li>
                     <li><FaTasks className='incs' /> Research</li>
                 </div>
-            </div>
+            </div> */}
             <div className='buttons_cntr'>
                 <li><FaSun className='icns' />Light</li>
                 <li><FaMoon className='icns' />Dark</li>

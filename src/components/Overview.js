@@ -6,8 +6,29 @@ import { FaRegBell } from 'react-icons/fa';
 import Calendar from './Celn';
 // import ComponentScheduler from './charts/Scheduler';
 import ComponentScheduler from './charts/ScheduleFullCal';
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+import Skeleton from '@mui/material/Skeleton';
+import Stack from '@mui/material/Stack';
+
 
 function MainPage() {
+
+    const HtmlTooltip = styled(({ className, ...props }) => (
+        <Tooltip {...props} classes={{ popper: className }} />
+    ))(({ theme }) => ({
+        [`& .${tooltipClasses.tooltip}`]: {
+            backgroundColor: '#f5f5f9',
+            color: 'rgba(0, 0, 0, 0.87)',
+            maxWidth: 220,
+            fontSize: theme.typography.pxToRem(12),
+            border: '1px solid #dadde9',
+        },
+    }));
+
+
     return (
         <div className="mainBx">
             <div className='contFrst'>
@@ -15,7 +36,16 @@ function MainPage() {
                     <h1>Hello, <span> Joseph</span>
                         <span className='handing'>✋🏼</span>
                     </h1>
-                    <FaRegBell className='icns' />
+                    <HtmlTooltip style={{ position: "absolute", right: "-10px", zIndex: "5" }}
+                        title={
+                            <>
+                                <Typography color="inherit">No Any Updates</Typography>
+                                <em>{"Currently On"}</em> <b>{'Working Phase'}</b> <u>{'Starting Soon'}</u>.{' '}
+                                {"Please Be patience"}
+                            </>
+                        }>
+                        <Button><FaRegBell className='icns' /></Button>
+                    </HtmlTooltip>
                 </div>
                 <div className='charts'>
                     <div className='usrDetail'>
@@ -28,7 +58,7 @@ function MainPage() {
                                     <li className='active'></li>
                                 </div>
                             </div>
-                            <ChartStats /> 
+                            <ChartStats />
                         </div>
                     </div>
 
@@ -37,7 +67,7 @@ function MainPage() {
                             <div>
                                 <h3>Your Progress</h3>
                             </div>
-                            <ChartCategory/>
+                            <ChartCategory />
                             <div className='indicator'>
                                 <li>Remains</li>
                                 <li>Completed</li>
@@ -45,16 +75,16 @@ function MainPage() {
                         </div>
                     </div>
 
-                    
+
                     <div className='celendar'>
-                            <Calendar/>
-                        </div>
+                        <Calendar />
+                    </div>
                     {/* <Clock className="clockstyles"/> */}
                 </div>
             </div>
 
             <div className='DateTimeGrid'>
-                <ComponentScheduler/>
+                <ComponentScheduler />
             </div>
         </div>
     );

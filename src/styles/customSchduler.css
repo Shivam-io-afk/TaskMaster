@@ -8,7 +8,24 @@
   border-radius: 12px !important;
   padding: 5px;
   font-size: 14px;
+  margin-bottom: 10px !important; 
 }
+
+.fc-now-indicator-arrow {
+  border-top: 8px solid blue !important;  /* Change color */
+  border-left: 6px solid transparent !important;
+  border-right: 6px solid transparent !important;
+  transform: scale(1.5); /* Make it larger */
+}
+
+.fc-now-indicator-arrow {
+  /* background: url('your-arrow-image.png') no-repeat center; */
+  width: 20px;
+  height: 20px;
+  border: none;
+}
+
+
 
 /* Style the current time indicator */
 .fc-now-indicator {
@@ -23,8 +40,8 @@
 }
 
 ::-webkit-scrollbar {
-  width: 8px !important;
-  height: 8px !important;
+  width: 5px !important;
+  height: 5px !important;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -51,7 +68,38 @@
 }
 
 .fc-timegrid-slot {
-  height: 80px !important; /* Increase row height */
+  height: 150px !important; /* Increase row height */
 }
 
 
+.fc-scrollgrid-sync-inner {
+  border-right: none !important;
+}
+
+.fc-scrollgrid,
+.fc-scrollgrid-section,
+.fc-scrollgrid-sync-table,
+.fc-daygrid-day {
+    border: none !important;
+}
+
+.fc-scrollgrid table {
+    border-collapse: collapse !important;
+}
+
+.fc-scrollgrid td, 
+.fc-scrollgrid th {
+    border: none !important;
+}
+
+.fc-datagrid-cell-frame {
+  border-bottom: 2px solid #ddd !important; /* Adjust thickness and color */
+}
+
+
+/* .fc-prev-button,
+.fc-next-button,
+.fc-today-button {
+    display: none !important;
+}
+ */
