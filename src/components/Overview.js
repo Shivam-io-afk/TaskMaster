@@ -10,8 +10,7 @@ import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-import Skeleton from '@mui/material/Skeleton';
-import Stack from '@mui/material/Stack';
+
 
 
 function MainPage() {

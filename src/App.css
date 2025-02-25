@@ -2,16 +2,17 @@
 
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
 }
 
 :root {
-    --font1: "Kanit", serif;
-    --font2: "Gabarito", serif;
-    --font3: "Oswald", serif;
-    --font4: "Josefin Sans", serif;
+  --font1: "Kanit", serif;
+  --font2: "Gabarito", serif;
+  --font3: "Oswald", serif;
+  --font4: "Josefin Sans", serif;
 }
 
 
@@ -35,7 +36,7 @@
 }
 
 
-.App .topBanner{
+.App .topBanner {
   position: relative;
   top: 0;
   right: 0;
@@ -47,12 +48,12 @@
   flex-direction: column;
 }
 
-.App .topBanner::after{
+.App .topBanner::after {
   content: '';
   position: absolute;
   top: 52%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   height: 102%;
   width: 100.5%;
   background: rgba(255, 255, 255, 0.2);
@@ -65,10 +66,10 @@
 }
 
 
-.App .topBanner .context{
+.App .topBanner .context {
   position: absolute;
   bottom: 0;
-  color:#2B2928 ;
+  color: #2B2928;
   font-family: var(--font2);
   width: 99%;
   align-self: center;
@@ -79,14 +80,16 @@
   padding: 0 5px;
 }
 
-.App .topBanner .context p:nth-child(1){
-  font-size:35px;
+.App .topBanner .context p:nth-child(1) {
+  font-size: 35px;
 }
-.App .topBanner .context p:nth-child(1) .incs{
+
+.App .topBanner .context p:nth-child(1) .incs {
   font-size: 13px;
   margin-left: 10px;
 }
-.App .topBanner .context p:nth-child(2){
+
+.App .topBanner .context p:nth-child(2) {
   height: 24px;
   font-size: 14px;
   display: flex;
@@ -96,36 +99,36 @@
   user-select: none;
 }
 
-.App .topBanner .context p > .incs{
+.App .topBanner .context p>.incs {
   margin-right: 5px;
 }
 
 
-.App .topBanner .context .dir_span{
+.App .topBanner .context .dir_span {
   position: absolute;
   bottom: 45px;
   font-size: 13px;
 }
 
-.App .topBanner .context .dir_span > span{
+.App .topBanner .context .dir_span>span {
   cursor: pointer;
 }
 
-.App .topBanner .context .dir_span b{
+.App .topBanner .context .dir_span b {
   cursor: default;
 }
 
 
-.App .midBanner{
+.App .midBanner {
   position: relative;
   height: 200px;
   width: 100%;
   display: flex;
 }
 
-.App .midBanner > div{
+.App .midBanner>div {
   height: 100%;
-  width: 50%;  
+  width: 50%;
   padding: 4px 0;
   padding-left: 10px;
 
@@ -146,11 +149,13 @@
   font-family: Arial, sans-serif;
 }
 
-.App .midBanner .container_left th{
+.App .midBanner .container_left th {
   color: #727272;
   font-weight: 300;
 }
-.App .midBanner .container_left th, td {
+
+.App .midBanner .container_left th,
+td {
   padding: 8px;
   text-align: left;
   font-size: 14px;
@@ -158,7 +163,7 @@
   cursor: default;
 }
 
-.App .midBanner .container_left .tfcs{
+.App .midBanner .container_left .tfcs {
   font-size: 13px;
   height: 30px;
   margin-left: 2px;
@@ -167,7 +172,7 @@
   background-color: #cecece98;
 }
 
-.App .midBanner .container_left .dt_org{
+.App .midBanner .container_left .dt_org {
   font-size: 13px;
   padding-left: 10px;
 }
@@ -185,10 +190,21 @@
 }
 
 
-.App .midBanner .container_left .tags .meetings { background-color: #f48a0078; }
-.App .midBanner .container_left .tags .ui-design { background-color: #fbbd047c; }
-.App .midBanner .container_left .tags .development { background-color: #4286f489; }
-.App .midBanner .container_left .tags .ux-research { background-color: #34a8538b; }
+.App .midBanner .container_left .tags .meetings {
+  background-color: #f48a0078;
+}
+
+.App .midBanner .container_left .tags .ui-design {
+  background-color: #fbbd047c;
+}
+
+.App .midBanner .container_left .tags .development {
+  background-color: #4286f489;
+}
+
+.App .midBanner .container_left .tags .ux-research {
+  background-color: #34a8538b;
+}
 
 .App .midBanner .container_left .assignees span {
   display: inline-block;
@@ -207,7 +223,7 @@
 
 
 
-.App .midBanner .container_right .input_area{
+.App .midBanner .container_right .input_area {
   position: absolute;
   top: 20px;
   right: 15px;
@@ -219,7 +235,7 @@
   align-items: center;
 }
 
-.App .midBanner .container_right .input_area input{
+.App .midBanner .container_right .input_area input {
   height: 100%;
   width: 90%;
   outline: none;
@@ -230,13 +246,13 @@
   text-transform: capitalize;
 }
 
-.App .midBanner .container_right .input_area input::placeholder{
+.App .midBanner .container_right .input_area input::placeholder {
   font-size: 14px;
   color: #999;
 }
 
 
-.App .midBanner .container_right .input_area .incs{
+.App .midBanner .container_right .input_area .incs {
   font-size: 15px;
   margin-left: 3px;
   color: #999;
@@ -255,28 +271,28 @@
 
 /* -- SubSection_2 -- */
 
-.App .box_container{
+.App .box_container {
   position: relative;
   height: 40px;
   width: 100%;
   display: flex;
 }
 
-.App .box_container > div{
+.App .box_container>div {
   position: relative;
   height: 100%;
   width: 100%;
   padding: 0 10px;
 }
 
-.App .box_container > div:nth-child(2){
+.App .box_container>div:nth-child(2) {
   display: flex;
   align-items: center;
-  justify-content:flex-end;
+  justify-content: flex-end;
 }
 
 
-.App .box_container .btn_tsk button{
+.App .box_container .btn_tsk button {
   margin-top: 2px;
   height: 35px;
   width: 120px;
@@ -293,18 +309,18 @@
   font-weight: 300;
 }
 
-.App .box_container .btn_tsk button:hover{
+.App .box_container .btn_tsk button:hover {
   background-color: #f99639af;
 }
 
-.App .box_container .btn_tsk button .incs{
+.App .box_container .btn_tsk button .incs {
   font-size: 14px;
 }
 
 
 
 
-.App .box_container .filterDrop{
+.App .box_container .filterDrop {
   height: 35px;
   font-size: 14px;
 }
@@ -312,18 +328,20 @@
 /* DropDown Changes */
 
 
-.p-dropdown{
+.p-dropdown {
   margin-left: 10px;
   border: 1px solid #b3b3b3;
   border-radius: 6px;
 }
 
-.p-dropdown:focus{
+.p-dropdown:focus {
   border: none;
 }
-.-inputwrapper-focus{
+
+.-inputwrapper-focus {
   border: none;
 }
+
 .p-dropdown .p-dropdown-label.p-placeholder {
   color: #6b7280;
   line-height: 32px;
@@ -344,7 +362,7 @@
 }
 
 /*  */
-.p-dropdown .p-dropdown-label { 
+.p-dropdown .p-dropdown-label {
   background: transparent;
   border: 0 none;
   line-height: 32px;
@@ -369,14 +387,32 @@
   font-size: 12px;
 }
 
+/* disabling blue border */
+
+.filterDrop:focus {
+  box-shadow: none !important;
+  outline: none !important;
+  border-color: #ccc !important;
+  /* Change this to your preferred border color */
+}
+
+
+.p-dropdown:focus,
+.p-dropdown.p-focus {
+  box-shadow: none !important;
+  outline: none !important;
+  border-color: #ccc !important;
+}
+
+
 
 
 /*  */
-.p-dropdown-panel .p-dropdown-items li{
+.p-dropdown-panel .p-dropdown-items li {
   height: 30px;
   padding: 0 5px;
   font-size: 12px;
-  
+
 }
 
 .p-dropdown:not(.p-disabled):hover {
@@ -397,7 +433,7 @@
 
 
 
-.App .taskcontainer{
+.App .taskcontainer {
   height: 378px;
   width: 100%;
   margin-top: 5px;
@@ -408,7 +444,7 @@
   overflow: hidden;
 }
 
-.App .taskcontainer .main_tskcnt{
+.App .taskcontainer .main_tskcnt {
   height: 100%;
   width: 100%;
   background-color: #F9F9F9;
@@ -418,7 +454,7 @@
 }
 
 
-.App .taskcontainer .main_tskcnt .cnt{
+.App .taskcontainer .main_tskcnt .cnt {
   height: 100%;
   width: calc(100% / 4);
   overflow: hidden hidden;
@@ -430,7 +466,7 @@
   align-items: center;
 }
 
-.App .taskcontainer .main_tskcnt .cnt .indicator{
+.App .taskcontainer .main_tskcnt .cnt .indicator {
   height: 35px;
   width: 99%;
   border-radius: 9px;
@@ -442,7 +478,7 @@
   user-select: none;
 }
 
-.App .taskcontainer .main_tskcnt .cnt .slider_bx{
+.App .taskcontainer .main_tskcnt .cnt .slider_bx {
   height: 90%;
   width: 99%;
   margin-top: 5px;
@@ -450,11 +486,11 @@
   scroll-snap-type: y mandatory;
 }
 
-.App .taskcontainer .main_tskcnt .cnt .slider_bx .T_blocks{
+.App .taskcontainer .main_tskcnt .cnt .slider_bx .T_blocks {
   position: relative;
   min-height: 150px;
   width: 100%;
-  margin-bottom: 7px ;
+  margin-bottom: 7px;
   border-radius: 10px;
   padding: 8px 10px;
   display: flex;
@@ -463,10 +499,10 @@
   flex-direction: column;
   cursor: pointer;
   overflow: hidden;
-  scroll-snap-align: end; 
+  scroll-snap-align: end;
 }
 
-.App .taskcontainer .main_tskcnt .cnt .slider_bx .T_blocks > div{
+.App .taskcontainer .main_tskcnt .cnt .slider_bx .T_blocks>div {
   height: 20px;
   border-radius: 3px;
   width: 100%;
@@ -475,7 +511,7 @@
   justify-content: space-between;
 }
 
-.App .taskcontainer .main_tskcnt .cnt .slider_bx .T_blocks .titlee{
+.App .taskcontainer .main_tskcnt .cnt .slider_bx .T_blocks .titlee {
   /* border: 1px solid ; */
   min-height: 100px;
   font-size: 33px;
@@ -487,35 +523,35 @@
   font-family: var(--font2);
 }
 
-.App .taskcontainer .main_tskcnt .cnt .slider_bx .T_blocks > div span{
+.App .taskcontainer .main_tskcnt .cnt .slider_bx .T_blocks>div span {
   font-size: 14px;
 }
 
-.App .taskcontainer .main_tskcnt .cnt .slider_bx .T_blocks > div:last-child span{
+.App .taskcontainer .main_tskcnt .cnt .slider_bx .T_blocks>div:last-child span {
   color: #797979;
   font-size: 13px;
 }
 
-.App .taskcontainer .main_tskcnt .cnt .slider_bx .T_blocks > div .icns{
+.App .taskcontainer .main_tskcnt .cnt .slider_bx .T_blocks>div .icns {
   transform: rotate(-45deg);
   color: #999999;
   font-size: 20px;
 }
 
-.bg_1{
-  background-color:rgb(255, 243, 209);
+.bg_1 {
+  background-color: rgb(255, 243, 209);
 }
 
-.bg_2{
+.bg_2 {
   background-color: rgb(217, 254, 220);
 }
 
-.bg_3{
+.bg_3 {
   background-color: rgb(217, 245, 254);
 }
 
-.bg_4{
-  background-color: rgba(239,239,239);
+.bg_4 {
+  background-color: rgba(239, 239, 239);
 }
 
 .App .taskcontainer .main_tskcnt .cnt .slider_bx::-webkit-scrollbar {

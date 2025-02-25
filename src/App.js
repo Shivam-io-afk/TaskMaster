@@ -1,4 +1,3 @@
-import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import MyComponent from './components/vanta';
@@ -8,9 +7,10 @@ import SubsectionApp from './components/SubSection_App';
 import SubSection from './components/SubSection';
 import TaskPortion from './components/TaskPortion';
 import OverviewPage from './components/Overview';
+import PrvTask from './components/PrivateTask';
+import './App.css';
 
-
-function App() {
+function App() { //Importing CDN 
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js";
@@ -33,7 +33,7 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
+  useEffect(() => { //Importing CDN
     const script = document.createElement("script");
     script.src = "https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js";
     script.async = true;
@@ -48,10 +48,10 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path='/home' element={<Page1/>}></Route>
-        <Route path='/' element={<Page2/>}></Route>
-        <Route path='/project' element={<Page3/>}></Route>
-        <Route path='/meet' element={<Page4/>}></Route>
+        <Route path='/home' element={<Page1 />}></Route>
+        <Route path='/' element={<Page2 />}></Route>
+        <Route path='/project' element={<Page3 />}></Route>
+        <Route path='/meet' element={<Page4 />}></Route>
       </Routes>
     </div>
   );
@@ -63,19 +63,20 @@ function App() {
 
 
 const Page1 = () => {
-  return(
-      <>
-          <OverviewPage/>
-      </>
+  return (
+    <>
+      <OverviewPage />
+    </>
   );
 }
 
 
 const Page2 = () => {
-  return(
-      <>
-          <h1>This is Tasklist Page</h1>
-      </>
+
+  return (
+    <>
+     <PrvTask/>
+    </>
   );
 }
 
@@ -102,10 +103,10 @@ const Page3 = () => {
 
 
 const Page4 = () => {
-  return(
-      <>
-          <h1>This is Categories Page</h1>
-      </>
+  return (
+    <>
+      <h1>This is Categories Page</h1>
+    </>
   );
 }
 

@@ -11,6 +11,9 @@ import { FaTasks } from 'react-icons/fa';
 import { FaSun } from 'react-icons/fa';
 import { FaMoon } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
+// import Dialog from '@mui/material/Dialog';
+// import DialogTitle from '@mui/material/DialogTitle';
+
 
 
 function SideBar() {
@@ -37,12 +40,13 @@ function SideBar() {
                     <img src={MainImg} alt='' />
                     <span>
                         <p>Mr Profile
-                            {/* <FaAngleDown className='icn' /> */}
+                            <FaAngleDown style={{marginLeft:"10px"}} className='icn' />
                         </p>
                         <p>xyz@gmail.com</p>
                     </span>
                 </div>
-                <div className='userLists'>
+
+                {/* <div className='userLists'>
                     <div className='box'>
                         <img src={HanuJi} alt='' />
                         <span>
@@ -64,7 +68,8 @@ function SideBar() {
                             <p>xyz@gmail.com</p>
                         </span>
                     </div>
-                </div>
+                </div> */}
+
             </div>
             <div className='container_thrd'>
                 <h3>Menu</h3>

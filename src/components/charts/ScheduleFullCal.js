@@ -6,6 +6,11 @@ import { useEffect } from "react";
 import '../../styles/customSchduler.css';
 
 const Scheduler = () => {
+    const date = new Date();
+    const formattedDate = new Intl.DateTimeFormat('en-CA').format(date); // 'en-CA' gives YYYY-MM-DD format
+    console.log(formattedDate);
+
+
     const colorArr = [
         "#FF4560", "#008FFB", "#00E396", "#A47BEF",
         "#FF5733", "#33FF57", "#5733FF", "#FFD700", "#DC143C", "#FF69B4", "#8A2BE2", "#00CED1", "#20B2AA", "#FFA07A", "#6A5ACD", "#FF4500", "#008080", "#2E8B57", "#ADFF2F", "#D2691E", "#FF8C00", "#4B0082", "#32CD32", "#8B0000", "#B22222", "#4682B4", "#556B2F",
@@ -28,10 +33,10 @@ const Scheduler = () => {
                     { id: "3", title: "Triple H", eventColor: colorArr[2] }
                 ]}
                 events={[
-                    { id: "1", resourceId: "1", title: "Research landing page", start: "2025-02-23T02:00:00", end: "2025-02-23T10:00:00" },
-                    { id: "2", resourceId: "2", title: "Myra Icon", start: "2025-02-23T11:00:00", end: "2025-02-23T18:00:00" },
-                    { id: "3", resourceId: "3", title: "Baryrose Illustration", start: "2025-02-23T08:00:00", end: "2025-02-23T16:30:00" },
-                    { id: "4", resourceId: "1", title: "Shemic mobile responsive", start: "2025-02-23T06:00:00", end: "2025-02-23T14:30:00", color: colorArr[3] }
+                    { id: "1", resourceId: "1", title: "Research landing page", start: `${formattedDate}T02:00:00`, end: `${formattedDate}T10:00:00` },
+                    { id: "2", resourceId: "2", title: "Myra Icon", start: `${formattedDate}T11:00:00`, end: `${formattedDate}T18:00:00` },
+                    { id: "3", resourceId: "3", title: "Baryrose Illustration", start: `${formattedDate}T08:00:00`, end: `${formattedDate}T16:30:00` },
+                    { id: "4", resourceId: "1", title: "Shemic mobile responsive", start: `${formattedDate}T06:00:00`, end: `${formattedDate}T14:30:00`, color: colorArr[3] }
                 ]}
                 headerToolbar={{
                     left: "title",
