@@ -81,7 +81,7 @@
 
 .Adder {
     position: absolute;
-    bottom: 50px;
+    bottom: 60px;
     left: 50%;
     transform: translate(-50%, 0);
     height: 40px;
@@ -128,8 +128,7 @@
 
 
 
-/* Task box container */
-.task-container {
+.localtaskContainer .task-container {
     padding: 20px;
     background: #f7f7f7;
     min-height: 100%;
@@ -139,8 +138,7 @@
     border-radius: 12px;
 }
 
-/* Individual task box */
-.task-box {
+.localtaskContainer .task-box {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -152,46 +150,40 @@
     transition: all 0.3s ease-in-out;
 }
 
-.task-box:hover {
+.localtaskContainer .task-box:hover {
     box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.08);
 }
 
-/* Left side: Checkbox + Task Text */
-.task-left {
+.localtaskContainer .task-left {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-/* Custom checkbox */
-.task-checkbox {
+.localtaskContainer .task-checkbox {
     width: 18px;
     height: 18px;
     cursor: pointer;
 }
 
-/* Task text */
-.task-text {
+.localtaskContainer .task-text {
     font-size: 16px;
     color: #333;
     transition: color 0.2s ease-in-out;
 }
 
-/* When checked, apply line-through effect */
-.checked .task-text {
+.localtaskContainer .checked .task-text {
     text-decoration: line-through;
     color: #aaa;
 }
 
-/* Right side: Time, Tag, Avatars */
-.task-right {
+.localtaskContainer .task-right {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-/* Task tag */
-.task-tag {
+.localtaskContainer .task-tag {
     background: #f0f4ff;
     color: #3b82f6;
     padding: 3px 8px;
@@ -199,20 +191,18 @@
     font-size: 14px;
 }
 
-/* Task time */
-.task-time {
+.localtaskContainer .task-time {
     color: #666;
     font-size: 14px;
     margin-right: 5px;
 }
 
-/* Avatars */
-.task-avatars {
+.localtaskContainer .task-avatars {
     display: flex;
     align-items: center;
 }
 
-.task-avatar {
+.localtaskContainer .task-avatar {
     width: 28px;
     height: 28px;
     border-radius: 50%;
@@ -222,6 +212,68 @@
     transition: transform 0.2s;
 }
 
-.task-avatar:hover {
+.localtaskContainer .task-avatar:hover {
     transform: scale(1.1);
+}
+
+
+.localtaskContainer .Timercontainer {
+    position: absolute;
+    top: 45px;
+    display: flex;
+    justify-content: space-evenly;
+    color: #ddd;
+    background-color: #222;
+    width: 380px;
+    padding: 0 6px;
+    border-radius: 10px;
+}
+
+
+.localtaskContainer .Timercontainer button{
+    height: 30px;
+    padding: 0 8px;
+    border-radius: 9px;
+    cursor: pointer;
+    align-self: center;
+    background-color: #F99639;
+    color: #fff;
+}
+.localtaskContainer .Timercontainer button:hover{
+    background-color: #e28d3d;
+}
+
+
+.localtaskContainer .Timercontainer .time-input{
+    height: 40px;
+    width: 94px;
+}
+.localtaskContainer .Timercontainer input{
+    width: 120px;
+}
+
+.localtaskContainer .Timercontainer label{
+    font-size: 11px;
+}
+
+
+
+.localtaskContainer input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* Invert the color to white */
+    opacity: 1; /* Ensure it's visible */
+}
+
+.localtaskContainer input[type="time"] {
+    color: white; /* Change text color to white */
+    background-color: transparent; /* Ensure background is transparent */
+}
+
+.localtaskContainer input[type="time"] {
+    position: relative;
+    padding-right: 10px; /* Space for custom icon */
+}
+
+.localtaskContainer input[type="time"]::after {
+    content: ""; 
+    display: none;
 }
