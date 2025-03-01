@@ -1,11 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import '../styles/privateTask.css';
 import { Dropdown } from 'primereact/dropdown';
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 import { FaPlus, FaClock } from 'react-icons/fa';
 
 const PrvTask = () => {
-    const [resDay, setResDay] = useState("Today"); // State for selected day
+    const [resDay, setResDay] = useState({ name: 'Today' }); // State for selected day (object)
     const [tasks, setTasks] = useState([
         {
             task: "Wireframing new product",
@@ -22,25 +22,44 @@ const PrvTask = () => {
                 "https://randomuser.me/api/portraits/women/44.jpg",
                 "https://randomuser.me/api/portraits/men/36.jpg"
             ],
-            date: new Date().toLocaleDateString('en-GB'), // Today's date
+            date: new Date().toLocaleDateString('en-GB'),
         },
     ]);
-    const [newTask, setNewTask] = useState(""); // State for input field
-    const [showTimer, setShowTimer] = useState(false); // State to show/hide timer
-    const [startTime, setStartTime] = useState(""); // Start time state
-    const [endTime, setEndTime] = useState(""); // End time state
+
+    const [newTask, setNewTask] = useState("");
+    const [showTimer, setShowTimer] = useState(false);
+    const [startTime, setStartTime] = useState("");
+    const [endTime, setEndTime] = useState("");
     const endTimeRef = useRef(null);
 
     const filterDay = [
-        { name: 'Today' },
         { name: 'Yesterday' },
+        { name: 'Today' },
         { name: 'Tomorrow' }
     ];
+
+    // Function to get the current time in HH:MM format
+    const getCurrentTime = () => {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0'); // ensure 2 digits
+        const minutes = String(now.getMinutes()).padStart(2, '0'); 
+        return `${hours}:${minutes}`;
+    };
+
+    useEffect(() => {
+       setInterval(() => {
+        if (showTimer) {
+            setStartTime(getCurrentTime());
+        }
+       }, 1000);
+    }, [showTimer]);
+
+
 
     // Function to get the date based on the selected day
     const getDateForSelectedDay = (selectedDay) => {
         const today = new Date();
-        switch (selectedDay) {
+        switch (selectedDay.name) { // Access the name property
             case "Yesterday":
                 today.setDate(today.getDate() - 1);
                 break;
@@ -58,10 +77,12 @@ const PrvTask = () => {
         });
     };
 
-    // Function to filter tasks based on the selected day
+
+
+    // Function to filter tasks on selected day
     const filterTasksByDay = (selectedDay) => {
         const today = new Date();
-        switch (selectedDay) {
+        switch (selectedDay.name) {
             case "Yesterday":
                 today.setDate(today.getDate() - 1);
                 break;
@@ -106,9 +127,9 @@ const PrvTask = () => {
                 date: new Date().toLocaleDateString('en-GB'), // Default to today's date
             };
 
-            // Update the task's date based on the selected day
+            // Update the task's date based by selected day
             const today = new Date();
-            switch (resDay) {
+            switch (resDay.name) {
                 case "Yesterday":
                     today.setDate(today.getDate() - 1);
                     break;
@@ -121,10 +142,10 @@ const PrvTask = () => {
             taskWithTime.date = today.toLocaleDateString('en-GB');
 
             setTasks([...tasks, taskWithTime]);
-            setNewTask(""); // Clear input field
-            setStartTime(""); // Clear start time
-            setEndTime(""); // Clear end time
-            setShowTimer(false); // Hide timer input fields
+            setNewTask("");
+            setStartTime("");
+            setEndTime("");
+            setShowTimer(false);
         }
     };
 
@@ -135,16 +156,16 @@ const PrvTask = () => {
                     <div className='GreetBox'>
                         <div>
                             <h2>{`${greeting}, Joseph!`}</h2>
-                            <p>{resDay}, {formattedDate}</p>
+                            <p>{resDay.name}, {formattedDate}</p>
                         </div>
-                        <div className="card flex justify-content-center">
+                        <div className="card">
                             <Dropdown
                                 value={resDay}
-                                onChange={(e) => setResDay(e.value.name)}
+                                onChange={(e) => setResDay(e.value)}
                                 options={filterDay}
                                 optionLabel="name"
                                 placeholder="Today"
-                                className="w-full md:w-14rem filterDrop"
+                                className="filterDrop"
                             />
                         </div>
                     </div>
@@ -160,9 +181,9 @@ const PrvTask = () => {
                         placeholder='Add task'
                         value={newTask}
                         onChange={(e) => setNewTask(e.target.value)}
-                        onKeyDown={(e) => e.key === "Enter" && handleAddTask()} // Trigger add task on Enter key
+                        onKeyDown={(e) => e.key === "Enter" && handleAddTask()}
                     />
-                    <FaClock className='icons' />
+                    <FaClock className='icons' onClick={() => setShowTimer(true)} />
 
                     {showTimer && (
                         <div className="Timercontainer">
@@ -206,7 +227,7 @@ const Tasks = ({ tasks }) => {
     );
 };
 
-const TaskBox = ({ task, time, tags, people }) => {
+const TaskBox = ({ task, time, tags, people /* not using peoples for now */ }) => {
     const [checked, setChecked] = useState(false);
 
     return (
@@ -224,15 +245,24 @@ const TaskBox = ({ task, time, tags, people }) => {
             <div className="task-right">
                 {tags && <span className="task-tag">{tags}</span>}
                 <span className="task-time">{time}</span>
-                <div className="task-avatars">
+                {/* <div className="task-avatars">
                     {people &&
                         people.map((p, i) => (
                             <img key={i} src={p} alt="avatar" className="task-avatar" />
                         ))}
-                </div>
+                </div> */}
             </div>
         </div>
     );
 };
 
 export default PrvTask;
+
+
+
+
+
+
+
+
+

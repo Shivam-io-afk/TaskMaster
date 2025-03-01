@@ -21,7 +21,7 @@ root.render(
 
 const KeyControlPreven = () => {
   window.addEventListener('keydown', (e) => {
-    if (e.keyCode === 9) {
+    if (e.key === 9) {
       e.preventDefault(); 
     }
   });

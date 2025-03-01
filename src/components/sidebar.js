@@ -17,6 +17,8 @@ import { NavLink } from 'react-router-dom';
 
 
 function SideBar() {
+
+    
     // const imgs = [
     //     { usrImg: '../images/hanuman.png' },
     //     { usrImg: '../images/lakshmana.png' },
@@ -46,6 +48,8 @@ function SideBar() {
                     </span>
                 </div>
 
+
+
                 {/* <div className='userLists'>
                     <div className='box'>
                         <img src={HanuJi} alt='' />
@@ -70,17 +74,22 @@ function SideBar() {
                     </div>
                 </div> */}
 
+
+
             </div>
             <div className='container_thrd'>
                 <h3>Menu</h3>
                 <div className='options'>
                     <NavLink to={'/home'}><li className=''><FaWindows className='incs' /><span>Overview</span></li></NavLink>
-                    <NavLink to={'/'}><li className='active'><FaListUl className='incs' /><span>Task List</span></li></NavLink>
+                    <NavLink to={'/private'}><li><FaListUl className='incs' /><span>Task List</span></li></NavLink>
                     <NavLink to={'/project'}><li><FaNetworkWired className='incs' /><span>Project Overview</span></li></NavLink>
-                    <NavLink to={'/meet'}><li><FaLayerGroup className='incs' /><span>Create Meeting</span></li></NavLink>
+                    <NavLink to={'/'}><li className='active'><FaLayerGroup className='incs' /><span>Create Meeting</span></li></NavLink>
                     <li><FaGear className='incs' /><span>Settings</span></li>
                 </div>
             </div>
+
+
+
             {/* <div className='container_frth'>
                 <h3>List <FaAngleDown className='icns' /></h3>
                 <div className='options'>
@@ -90,6 +99,9 @@ function SideBar() {
                     <li><FaTasks className='incs' /> Research</li>
                 </div>
             </div> */}
+
+
+
             <div className='buttons_cntr'>
                 <li><FaSun className='icns' />Light</li>
                 <li><FaMoon className='icns' />Dark</li>

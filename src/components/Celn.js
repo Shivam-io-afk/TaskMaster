@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../styles/Celendar.css"; // Import styles if needed
+import "../styles/Celendar.css";
 
 const months = [
   "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
@@ -54,7 +54,13 @@ const Calendar = () => {
       </header>
       <div className="calendar">
         <ul className="weeks">
-          <li>Sun</li><li>Mon</li><li>Tue</li><li>Wed</li><li>Thu</li><li>Fri</li><li>Sat</li>
+          <li>Sun</li>
+          <li>Mon</li>
+          <li>Tue</li>
+          <li>Wed</li>
+          <li>Thu</li>
+          <li>Fri</li>
+          <li>Sat</li>
         </ul>
         <ul className="days">{days}</ul>
       </div>

@@ -1,17 +1,14 @@
 import { Routes, Route } from 'react-router-dom';
 import React, { useEffect } from 'react';
-import MyComponent from './components/vanta';
-import { FaCalendarAlt } from 'react-icons/fa';
-import { FaRegEdit } from 'react-icons/fa';
-import SubsectionApp from './components/SubSection_App';
-import SubSection from './components/SubSection';
-import TaskPortion from './components/TaskPortion';
 import OverviewPage from './components/Overview';
 import PrvTask from './components/PrivateTask';
+
+
+import ProjectOvr from './components/ProjectOvr';
 import './App.css';
 
-function App() { //Importing CDN 
-  useEffect(() => {
+function App() { 
+  useEffect(() => { //Importing CDN 
     const script = document.createElement("script");
     script.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js";
     script.async = true;
@@ -22,7 +19,7 @@ function App() { //Importing CDN
     };
   }, []);
 
-  useEffect(() => {
+  useEffect(() => { //Importing CDN 
     const script = document.createElement("script");
     script.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js";
     script.async = true;
@@ -33,7 +30,7 @@ function App() { //Importing CDN
     };
   }, []);
 
-  useEffect(() => { //Importing CDN
+  useEffect(() => {  
     const script = document.createElement("script");
     script.src = "https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js";
     script.async = true;
@@ -49,9 +46,9 @@ function App() { //Importing CDN
     <div className="App">
       <Routes>
         <Route path='/home' element={<Page1 />}></Route>
-        <Route path='/' element={<Page2 />}></Route>
+        <Route path='/private' element={<Page2 />}></Route>
         <Route path='/project' element={<Page3 />}></Route>
-        <Route path='/meet' element={<Page4 />}></Route>
+        <Route path='/' element={<Page4 />}></Route>
       </Routes>
     </div>
   );
@@ -86,17 +83,7 @@ const Page2 = () => {
 const Page3 = () => {
   return (
     <>
-      <div className='topBanner'>
-        <MyComponent />
-        <div className='context'>
-          <p>My Project<FaRegEdit className='incs' style={{ cursor: "pointer" }} /></p>
-          <p><FaCalendarAlt className='incs' />19 Mar 2025</p>
-          <span className='dir_span'><span>Dashboard</span><b> / </b><span>Project Overview</span></span>
-        </div>
-      </div>
-      <SubsectionApp />
-      <SubSection />
-      <TaskPortion />
+      <ProjectOvr/>
     </>
   )
 }
