@@ -47,7 +47,7 @@ function App() {
       <Routes>
         <Route path='/home' element={<Page1 />}></Route>
         <Route path='/private' element={<Page2 />}></Route>
-        <Route path='/project' element={<Page3 />}></Route>
+        <Route path='/prvtask' element={<Page3 />}></Route>
         <Route path='/' element={<Page4 />}></Route>
       </Routes>
     </div>
@@ -62,7 +62,7 @@ function App() {
 const Page1 = () => {
   return (
     <>
-      <OverviewPage />
+      <OverviewPage/>
     </>
   );
 }
@@ -81,6 +81,7 @@ const Page2 = () => {
 
 
 const Page3 = () => {
+
   return (
     <>
       <ProjectOvr/>

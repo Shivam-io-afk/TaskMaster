@@ -8,20 +8,20 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <>
     <div className='main'>
        <Router>
           <SideBar />
           <App />
         </Router>
     </div>
-  </React.StrictMode>
+  </>
 );
 
 
 const KeyControlPreven = () => {
   window.addEventListener('keydown', (e) => {
-    if (e.key === 9) {
+    if (e.key === 'Tab') {
       e.preventDefault(); 
     }
   });

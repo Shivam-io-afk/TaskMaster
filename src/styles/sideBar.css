@@ -260,6 +260,13 @@
     border-radius: 6px;
 }
 
+.active > li{
+    background-color: #F99639;
+    color: #fff !important;
+    border-radius: 6px;
+    transition: 0.2s ease-in-out;
+}
+
 
 
 

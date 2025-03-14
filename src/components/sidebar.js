@@ -1,16 +1,17 @@
-import '../styles/sideBar.css'
-import MainImg from '../images/profile.png'
-import HanuJi from '../images/hanuman.png'
+import '../styles/sideBar.css';
+import MainImg from '../images/profile.png';
+// import HanuJi from '../images/hanuman.png';
 import { FaAngleDown } from "react-icons/fa";
 import { FaGear } from "react-icons/fa6";
 import { FaLayerGroup } from 'react-icons/fa';
 import { FaNetworkWired } from 'react-icons/fa';
 import { FaListUl } from 'react-icons/fa';
 import { FaWindows } from 'react-icons/fa6';
-import { FaTasks } from 'react-icons/fa';
+// import { FaTasks } from 'react-icons/fa';
 import { FaSun } from 'react-icons/fa';
 import { FaMoon } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
+import '../styles/activeNav.css';
 // import Dialog from '@mui/material/Dialog';
 // import DialogTitle from '@mui/material/DialogTitle';
 
@@ -80,10 +81,30 @@ function SideBar() {
             <div className='container_thrd'>
                 <h3>Menu</h3>
                 <div className='options'>
-                    <NavLink to={'/home'}><li className=''><FaWindows className='incs' /><span>Overview</span></li></NavLink>
-                    <NavLink to={'/private'}><li><FaListUl className='incs' /><span>Task List</span></li></NavLink>
-                    <NavLink to={'/project'}><li><FaNetworkWired className='incs' /><span>Project Overview</span></li></NavLink>
-                    <NavLink to={'/'}><li className='active'><FaLayerGroup className='incs' /><span>Create Meeting</span></li></NavLink>
+                    <NavLink to={'/home'}>
+                        <li className=''>
+                            <FaWindows className='incs' />
+                            <span>Overview</span>
+                        </li>
+                    </NavLink>
+                    <NavLink to={'/private'}>
+                        <li>
+                            <FaListUl className='incs'/>
+                            <span>Task List</span>
+                        </li>
+                    </NavLink>
+                    <NavLink to={'/prvtask'}>
+                        <li>
+                            <FaNetworkWired className='incs' />
+                            <span>Project Overview</span>
+                        </li>
+                    </NavLink>
+                    <NavLink to={'/'}>
+                        <li>
+                            <FaLayerGroup className='incs' />
+                            <span>Create Meeting</span>
+                        </li>
+                    </NavLink>
                     <li><FaGear className='incs' /><span>Settings</span></li>
                 </div>
             </div>

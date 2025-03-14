@@ -8,7 +8,6 @@ import '../../styles/customSchduler.css';
 const Scheduler = () => {
     const date = new Date();
     const formattedDate = new Intl.DateTimeFormat('en-CA').format(date); // 'en-CA' gives YYYY-MM-DD format
-    console.log(formattedDate);
 
 
     const colorArr = [
