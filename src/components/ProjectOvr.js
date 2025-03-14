@@ -8,44 +8,50 @@ import '../App.css';
 import { useState } from 'react';
 
 function ProjectOverview() {
-    console.clear(); //
-    const [Pages, setPages] = useState(0); // Navigate pages
+    const [Pages, setPages] = useState(1); // Navigate pages
     const [selectedProject, setSelectedProject] = useState(null);
 
-    const tags = ["meetings", "ui-design", "development", "ux-research"];
-    const assigness = ['AlphaStudio', 'BetaCodes', 'GammaLabs'];
 
     // Callback function to receive data from child
     const handlePageChange = (page, project = null) => {
         setPages(page);
         if (project) {
-            setSelectedProject(project);
+            setSelectedProject(project); // Set the selected project
         }
-        // alert(`Page changed to: ${page}`);
     };
 
     return (
         <>
-            {
-                Pages === 1 ?
-                    <MainPart
-                        projectname={selectedProject?.name || "Hello World"} // Use selected project data
-                        priority="Most"
-                        duedate="12 Mar 2025"
-                        alltags={tags}
-                        assign={assigness}
-                        onPageChange={handlePageChange}/>
-                    :
-                    <ProjectCardview onPageChange={handlePageChange} />
-            }
+            {Pages === 1 ? (
+                <MainPart
+                    project={selectedProject} // Pass the entire project object
+                    onPageChange={handlePageChange}
+                />
+            ) : (
+                <ProjectCardview onPageChange={handlePageChange} />
+            )}
         </>
     );
 }
 
+
+
+
+
+
 const MainPart = (props) => {
-    //callback function
+    // Callback function
     const handleNavigation = (page) => {
         props.onPageChange(page); // Send data to parent
+    };
+
+    const { project } = props; // Destructure props
+
+    const subsectionData = {
+        priority: project?.priority || "Not specified",
+        duedate: project?.duedate || "No due date",
+        tags: project?.tags || ['---','---','---'],
+        team: project?.team || ['---','---','---']
     };
 
     return (
@@ -53,8 +59,8 @@ const MainPart = (props) => {
             <div className='topBanner'>
                 <MyComponent />
                 <div className='context'>
-                    <p>{props.projectname}<FaRegEdit className='incs' style={{ cursor: "pointer" }} /></p>
-                    <p><FaCalendarAlt className='incs' />19 Mar 2025</p>
+                    <p>{project?.name || "Hello World"}<FaRegEdit className='incs' style={{ cursor: "pointer" }} /></p>
+                    <p><FaCalendarAlt className='incs' />{project?.duedate || "No due date"}</p>
                     <span className='dir_span'>
                         <span onClick={() => handleNavigation(0)}> Dashboard </span>
                         <b> / </b>
@@ -62,27 +68,76 @@ const MainPart = (props) => {
                     </span>
                 </div>
             </div>
-            <SubsectionApp data={props} />
+
+            <SubsectionApp data={subsectionData} />
+
             <SubSection />
             <TaskPortion />
         </>
     );
 };
 
-const ProjectCardview = ({ onPageChange }) => {
-    // Sample project data
-    const projects = [
-        { id: 1, name: "Project 1", description: "This is project 1" },
-        { id: 2, name: "Project 2", description: "This is project 2" },
-        { id: 3, name: "Project 3", description: "This is project 3" },
-        { id: 4, name: "Project 4", description: "This is project 4" },
-        { id: 5, name: "Project 5", description: "This is project 5" },
-        { id: 6, name: "Project 6", description: "This is project 6" },
-        { id: 7, name: "Project 7", description: "This is project 7" },
-        { id: 8, name: "Project 8", description: "This is project 8" },
-        { id: 9, name: "Project 9", description: "This is project 9" },
-        { id: 10, name: "Project 10", description: "This is project 10" }
+
+
+
+
+function formatDate(date) {
+    const months = [
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
     ];
+
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = months[date.getMonth()];
+    const year = date.getFullYear();
+
+    return `${day}-${month}-${year}`;
+}
+
+
+
+
+
+
+const ProjectCardview = ({ onPageChange }) => {
+    const today = new Date();
+
+
+    //TempData
+    const projects = [
+        {
+            id: 1,
+            name: "Stream App",
+            description: "This is project 1",
+            duedate: `${formatDate(today)}`,
+            priority: 'Mid',
+            team: ['AlphaStudio', 'BetaCodes', 'GammaLabs'],
+            tags: ["meetings", "ui-design", "development", "ux-research"]
+        },
+        {
+            id: 2,
+            name: "WireBook Clone",
+            description: "This is project 2",
+            duedate: `12-Apr-2025`,
+            priority: 'Low',
+            team: ['Digital', 'BitCOder', 'Phlabo'],
+            tags: ["meetings", "ux-research"]
+        },
+        {
+            id: 3,
+            name: "Discussion",
+            description: "This is project 3",
+            duedate: `03-May-2025`,
+            priority: 'High',
+            team: ['Digital', 'Phlabo'],
+            tags: ["meetings", "development" ,"ux-research"]
+        }
+    ];
+
+
+
+
+    
 
     return (
         <div className='card-container'>
@@ -90,10 +145,13 @@ const ProjectCardview = ({ onPageChange }) => {
                 <div
                     key={project.id}
                     className='card'
-                    onClick={() => onPageChange(1, project)} // Passes selected project data
+                    onClick={() => onPageChange(1, project)} // Pass the entire project object
                 >
                     <h3>{project.name}</h3>
                     <p>{project.description}</p>
+                    <p><b>Due Date:</b> {project.duedate}</p>
+                    <p><b>Priority:</b> {project.priority}</p>
+                    <p><b>Tags:</b> {project.tags.join(', ')}</p>
                 </div>
             ))}
         </div>

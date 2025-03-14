@@ -1,14 +1,29 @@
 import '../App.css';
 import { FaSearch } from 'react-icons/fa';
+import colors from './Json/colors.json';
 
 const subsection = (fromparent) => {
+    const shuffleArray = (array) => {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    };
+
+    const shuffledColors = shuffleArray([...colors.colors]);
+
+    const getUniqueColor = (index) => {
+        return shuffledColors[index % shuffledColors.length];
+    };
+
     return (
         <div className="midBanner">
             <div className='container_left'>
                 <table>
                     <tr>
                         <th>Priority</th>
-                        <td><span className='tfcs'>{fromparent.data.priority}</span></td>
+                        <td><span className={'tfcs ' + fromparent.data.priority}>{fromparent.data.priority}</span></td>
                     </tr>
                     <tr>
                         <th>Due Date</th>
@@ -17,27 +32,25 @@ const subsection = (fromparent) => {
                     <tr>
                         <th>Tags</th>
                         <td className="tags">
-                            {
-                                fromparent.data.alltags.map((val, keys) => (
-                                    <span key={keys} className={val}>{val}</span>
-                                ))
-                            }
+                            {fromparent.data.tags.map((val, keys) => (
+                                <span
+                                    key={keys}
+                                    className={val}
+                                    style={{ backgroundColor: getUniqueColor(keys) }}
+                                >
+                                    {val}
+                                </span>
+                            ))}
                         </td>
                     </tr>
-
-
-                    {/* Have to work here */}
                     <tr>
                         <th>Assignees</th>
-                        <td class="assignees">
-                            {
-                                fromparent.data.assign.map((val, keys) => (
-                                        <span key={keys}>{val}</span>
-                                ))
-                            }
+                        <td className="assignees">
+                            {fromparent.data.team.map((val, keys) => (
+                                <span key={keys}>{val}</span>
+                            ))}
                         </td>
                     </tr>
-
                 </table>
             </div>
             <div className='container_right'>
@@ -48,6 +61,6 @@ const subsection = (fromparent) => {
             </div>
         </div>
     );
-}
+};
 
 export default subsection;

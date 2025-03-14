@@ -47,7 +47,11 @@
 
 
 .card-container .card {
-  border: 1px solid #ccc;
+  border-right: 2px solid #ddd;
+  border-top: 2px solid #ddd;
+  border-bottom: 2px solid #ddd;
+
+  border-left: 2pc solid #F99639;
   border-radius: 8px;
   padding: 15px;
   margin: 10px 10px;
@@ -214,7 +218,22 @@
 .App .midBanner .container_left th {
   color: #727272;
   font-weight: 300;
+  width: 100px;
 }
+
+.App .midBanner .container_left table tr:nth-child(2) th, 
+.App .midBanner .container_left table tr:nth-child(2) td  {
+  height: 20px;
+  margin: -100px 0;
+  padding-top:12px;
+  padding-bottom: 2px;
+}
+
+
+.App .midBanner .container_left table tr:nth-child(2) td  {
+  padding-left: 15px;
+}
+
 
 .App .midBanner .container_left th,td {
   padding: 8px;
@@ -228,10 +247,22 @@
   font-size: 13px;
   height: 30px;
   margin-left: 2px;
-  padding: 8px 10px;
+  padding: 5px 10px;
   border-radius: 9px;
-  background-color: #cecece98;
 }
+
+.App .midBanner .container_left .High{
+  border:2px solid #fd707098;
+}
+
+.App .midBanner .container_left .Low{
+  border:2px solid #aaaaaad7;
+}
+
+.App .midBanner .container_left .Mid{
+  border:2px solid #41f26198;
+}
+
 
 .App .midBanner .container_left .dt_org {
   font-size: 13px;
@@ -257,7 +288,7 @@
 
 
 .App .midBanner .container_left .tags .meetings {
-  background-color: #f48a0078;
+  background-color: #ff174478;
 }
 
 .App .midBanner .container_left .tags .ui-design {
@@ -639,4 +670,10 @@
 /* Handle on hover */
 .App .taskcontainer .main_tskcnt .cnt .slider_bx::-webkit-scrollbar-thumb:hover {
   background: #555 !important;
+}
+
+
+.card {
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d;
 }
