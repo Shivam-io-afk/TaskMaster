@@ -90,7 +90,7 @@ function SideBar() {
                     <NavLink to={'/private'}>
                         <li>
                             <FaListUl className='incs'/>
-                            <span>Task List</span>
+                            <span>Personal List</span>
                         </li>
                     </NavLink>
                     <NavLink to={'/prvtask'}>

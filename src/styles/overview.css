@@ -196,7 +196,7 @@
     left: 1px;
     height: 85%;
     width: 45%;
-    background-color: #fff;
+    background-color: #fff !important;
     z-index: 1;
     margin: 2px;
     border-radius: 9px;

@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Fjalla+One&family=Gabarito:wght@100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@200..700&display=swap');
+
+
+:root {
+    --font1: "Kanit", serif;
+    --font2: "Gabarito", serif;
+    --font3: "Oswald", serif;
+    --font4: "Josefin Sans", serif;
+}
+
+.icons,
+.icon {
+    cursor: pointer !important;
+}
+
+.taskadder_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 30;
+    font-family: var(--font2);
+    background-color: #00000047;
+}
+
+
+.taskadder_container .m_container {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 500px;
+    width: 450px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 9px;
+}
+
+
+.taskadder_container .m_container>div {
+    position: absolute;
+    height: 90%;
+    width: 410px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+
+.taskadder_container .m_container>div .input-container {
+    position: relative;
+    width: 97%;
+    margin-top: 15px;
+    display: flex;
+}
+
+.taskadder_container .m_container>div .input-container label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 13px;
+    color: #999;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    background: white;
+    padding: 0 5px;
+}
+
+.taskadder_container .m_container>div .input-container input {
+    width: 80%;
+    padding-left: 10px;
+    padding-right: 25px;
+    font-size: 13px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-family: var(--font2);
+}
+
+.taskadder_container .m_container>div .input-container.focused label {
+    top: -7px;
+    left: 8px;
+    font-size: 11px;
+    color: #F99639;
+}
+
+
+.taskadder_container .m_container>div .time_date {
+    position: relative;
+    top: 18%;
+}
+
+.taskadder_container .m_container>div .time_date .indicator {
+    position: absolute;
+    top: -45px;
+    left: 0;
+    height: 35px;
+    width: 100%;
+    background-color: rgb(255, 231, 209);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 18px;
+}
+
+.taskadder_container .m_container>div .time_date .indicator .icon {
+    height: 30px;
+    width: 30px;
+    padding: 8px;
+    background-color: #fff;
+    border-radius: 20px;
+    transform: scale(0.8);
+    /* color: grey; */
+}
+
+.taskadder_container .m_container>div .time_date .indicator>.box {
+    position: relative;
+    height: 30px;
+    width: calc(100% - 72px);
+    padding: 0 6px;
+    line-height: 30px;
+    margin: 0 5px;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 2px 0;
+}
+
+.taskadder_container .m_container>div .time_date .indicator .box>p:nth-child(2)::after {
+    content: '_';
+    position: absolute;
+    top: -2px;
+    left: 49%;
+    font-weight: 800;
+    color: #000;
+}
+
+.taskadder_container .m_container>div .time_date .indicator .box>p {
+    height: 100%;
+    width: 90px;
+    line-height: 180%;
+    font-size: 14px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 20px;
+    color: #F99639;
+    margin: 0 10px;
+}
+
+
+.input-container .icon {
+    position: relative;
+    top: 12px;
+    left: -20px;
+    font-size: 9px;
+    z-index: 5;
+    cursor: pointer;
+}
+
+
+.taskadder_container .m_container>div .time_date .wrapper {
+    position: relative;
+    top: -30px;
+    left: 0;
+    width: 410px;
+    transform: scale(0.8);
+}
+
+
+
+
+.time-range-container {
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.time-grid {
+    display: grid;
+    margin-top: 10px;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    max-width: 410px;
+}
+
+.time-slot {
+    height: 32px;
+    min-width: 60px;
+    border: none;
+    border-radius: 20px;
+    background-color: #f5f5f5;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s ease;
+    font-family: var(--font2);
+}
+
+.time-slot:hover {
+    background-color: rgb(255, 203, 158);
+}
+
+.selected-start {
+    background-color: #F99639;
+    color: white;
+}
+
+.selected-end {
+    background-color: #F99639;
+    color: white;
+}
+
+.in-range {
+    background-color: #fff1e4;
+    color: #ff7b00;
+}

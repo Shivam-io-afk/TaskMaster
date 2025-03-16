@@ -4,8 +4,8 @@ import SubSection from '../components/SubSection';
 import TaskPortion from '../components/TaskPortion';
 import { FaCalendarAlt } from 'react-icons/fa';
 import { FaRegEdit } from 'react-icons/fa';
-import '../App.css';
 import { useState } from 'react';
+import '../App.css';
 
 function ProjectOverview() {
     const [Pages, setPages] = useState(1); // Navigate pages

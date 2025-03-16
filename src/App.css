@@ -75,6 +75,13 @@
 }
 
 
+.DateTimeGrid {
+  border: 1px solid lightgrey;
+  padding: 7px;
+  margin-top: -15px;
+  border-radius: 12px;
+}
+
 
 
 
@@ -611,11 +618,9 @@
 }
 
 .App .taskcontainer .main_tskcnt .cnt .slider_bx .T_blocks .titlee {
-  /* border: 1px solid ; */
   min-height: 100px;
   font-size: 33px;
   letter-spacing: -0.5px;
-  /* color: currentColor; */
   padding-top: 6px;
   color: #000;
   margin: -10px 0;
@@ -657,17 +662,14 @@
   width: 0.5px !important;
 }
 
-/* Track */
 .App .taskcontainer .main_tskcnt .cnt .slider_bx::-webkit-scrollbar-track {
   background: #f1f1f1 !important;
 }
 
-/* Handle */
 .App .taskcontainer .main_tskcnt .cnt .slider_bx::-webkit-scrollbar-thumb {
   background: none !important;
 }
 
-/* Handle on hover */
 .App .taskcontainer .main_tskcnt .cnt .slider_bx::-webkit-scrollbar-thumb:hover {
   background: #555 !important;
 }
@@ -677,3 +679,22 @@
   transition: transform 0.3s ease;
   transform-style: preserve-3d;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
