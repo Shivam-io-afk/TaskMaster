@@ -3,7 +3,7 @@ import '../App.css';
 import { FaCirclePlus, FaX, FaArrowRight, FaArrowLeft } from 'react-icons/fa6';
 import { Dropdown } from 'primereact/dropdown';
 import "primereact/resources/themes/lara-light-cyan/theme.css";
-import "../styles/TimeRange.css"; // Import CSS file
+import "../styles/TimeRange.css"; 
 import { SelectableCal } from './Celn';
 
 
@@ -11,6 +11,7 @@ const SubSection = () => {
     const [selectfil_oe, setselectfil_oe] = useState(null);
     const [selectfil_ee, setselectfil_ee] = useState(null);
     const [selectfil_fe, setselectfil_fe] = useState(null);
+    const [render, Setrender] = useState(0);
 
 
     const filter_oe = [
@@ -39,6 +40,13 @@ const SubSection = () => {
         { name: 'Meetings & Communication' }
     ];
 
+    
+    let ToggleTaskAdder = (res,resp = 0) => {
+        if(resp === 1){
+            console.log("Task Added");
+        }
+        Setrender(res);
+    }
 
 
 
@@ -46,7 +54,7 @@ const SubSection = () => {
         <>
             <div className="box_container">
                 <div className='btn_tsk'>
-                    <button>New Task &nbsp;&nbsp;<FaCirclePlus className='incs' /></button>
+                    <button onClick={() => Setrender(1)}>New Task &nbsp;&nbsp;<FaCirclePlus className='incs' /></button>
                 </div>
                 <div className='filters'>
 
@@ -62,7 +70,9 @@ const SubSection = () => {
                 </div>
 
             </div>
-            <Taskadder />
+            {
+                render === 1 ? <Taskadder data={ToggleTaskAdder}/> : null 
+            }
         </>
     );
 }
@@ -70,8 +80,9 @@ const SubSection = () => {
 
 
 
-function Taskadder() {
-    console.clear();
+function Taskadder(prop) {
+    // console.clear();
+    console.log(prop);
     const [taskName, setTaskName] = useState();
     const [Condition, setCondition] = useState(1);
     const [startTime, setStartTime] = useState('Start-Time');
@@ -93,7 +104,7 @@ function Taskadder() {
                     <FloatingInputLabel label="Task Name" value={taskName} onChange={(e) => setTaskName(e.target.value)} />
                     <div className='time_date'>
                         <div className='indicator'>
-                            <FaArrowLeft className='icon' onClick={() => setCondition(1)} />
+                            <FaArrowLeft title='Prev' className='icon' onClick={() => setCondition(1)} />
                             <p className='box'>
                                 {
                                     Condition === 2 ? <>
@@ -101,20 +112,24 @@ function Taskadder() {
                                         <p>{EndTime}</p>
                                     </>
 
-                                        : <p>{selectedDate}</p>
+                                        : <p>{selectedDate ? selectedDate : 'Date'}</p>
                                 }
                             </p>
-                            <FaArrowRight className='icon' onClick={() => setCondition(2)} />
+                            <FaArrowRight title='Next' className='icon' onClick={() => setCondition(2)} />
                         </div>
                         {
                             Condition === 1 ? <SelectableCal onDateSelect={handleDateSelect} /> : <TimeRangePicker onChange={(start, end) => { setStartTime(start); setEndTime(end); console.log("Selected Time Range:", start, "to", end); }} />
                         }
+                        <button className='btn clicktorem' title='Close' onClick={() => prop.data(0)}><FaX/></button>
+                        <button className='btn clicktoadd' title='Add Task' onClick={() => prop.data(0,1)}>Add</button>
                     </div>
                 </div>
             </div>
         </div>
     );
 }
+
+
 
 
 

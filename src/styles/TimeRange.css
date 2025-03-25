@@ -13,6 +13,10 @@
     cursor: pointer !important;
 }
 
+
+
+/* ---- Task Adder (Project Overview) */
+
 .taskadder_container {
     position: absolute;
     top: 0;
@@ -54,6 +58,7 @@
 
 .taskadder_container .m_container>div .input-container {
     position: relative;
+    top: 20px;
     width: 97%;
     margin-top: 15px;
     display: flex;
@@ -92,7 +97,7 @@
 
 .taskadder_container .m_container>div .time_date {
     position: relative;
-    top: 18%;
+    top: 23%;
 }
 
 .taskadder_container .m_container>div .time_date .indicator {
@@ -172,6 +177,44 @@
     transform: scale(0.8);
 }
 
+
+.taskadder_container .m_container>div .time_date .btn {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    height: 30px;
+    width: 60px;
+    text-transform: capitalize;
+    border-radius: 9px;
+    cursor: pointer;
+    background-color: #F99639;
+    color: #fff;
+    border: none;
+    transition: 0.1s ease;
+}
+
+.taskadder_container .m_container>div .time_date .clicktorem {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    color: #888;
+    border: 1px solid #777;
+    height: 30px;
+    width: 30px;
+    border-radius: 50px;
+    transform: scale(0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    transform: scale(0.8);
+}
+
+.taskadder_container .m_container>div .time_date .clicktoadd:hover {
+    transform: scale(1.03);
+    background-color: #ffa755;
+}
 
 
 
