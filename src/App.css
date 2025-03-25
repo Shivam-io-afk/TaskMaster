@@ -573,6 +573,7 @@
 }
 
 .App .taskcontainer .main_tskcnt .cnt .indicator {
+  position: relative;
   height: 35px;
   width: 99%;
   border-radius: 9px;
@@ -583,6 +584,68 @@
   padding: 0 10px;
   user-select: none;
 }
+
+.App .taskcontainer .main_tskcnt .cnt .indicator > div{
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  transform: translate(-50%, -50%);
+  height: 28px;
+  width: 55px;
+  background: rgb(235, 246, 235);
+  color: rgb(18, 222, 18);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 9px;
+  font-family: var(--font2);
+}
+.App .taskcontainer .main_tskcnt .cnt .indicator > div .icns{
+  font-size: 17px;
+  color: rgb(18, 222, 18);
+}
+.App .taskcontainer .main_tskcnt .cnt .indicator > div span{
+  font-weight: 600;
+}
+
+
+
+
+
+
+.App .taskcontainer .main_tskcnt .w_sc .indicator > div{
+  background: rgb(255, 243, 218);
+  color: orange;
+}
+.App .taskcontainer .main_tskcnt .w_sc .indicator > div .icns{
+  font-size: 17px;
+  color: orange;
+}
+
+.App .taskcontainer .main_tskcnt .w_thr .indicator > div{
+  background: rgb(229, 255, 255);
+  color: rgb(19, 224, 224);
+}
+.App .taskcontainer .main_tskcnt .w_thr .indicator > div .icns{
+  font-size: 17px;
+  color: rgb(19, 224, 224);
+}
+
+
+.App .taskcontainer .main_tskcnt .w_frt .indicator > div{
+  background: rgb(255, 225, 225);
+  color: red;
+}
+.App .taskcontainer .main_tskcnt .w_frt .indicator > div .icns{
+  font-size: 17px;
+  color: red;
+
+}
+
+
+
+
+
 
 .App .taskcontainer .main_tskcnt .cnt .slider_bx {
   height: 90%;

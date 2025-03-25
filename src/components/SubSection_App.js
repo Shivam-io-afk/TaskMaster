@@ -46,9 +46,11 @@ const subsection = (fromparent) => {
                     <tr>
                         <th>Assignees</th>
                         <td className="assignees">
-                            {fromparent.data.team.map((val, keys) => (
+                            {
+                            fromparent.data.team.map((val, keys) => (
                                 <span key={keys}>{val}</span>
-                            ))}
+                            ))
+                            }
                         </td>
                     </tr>
                 </table>
