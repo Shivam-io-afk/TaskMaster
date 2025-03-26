@@ -4,19 +4,17 @@ import SubSection from '../components/SubSection';
 import TaskPortion from '../components/TaskPortion';
 import { FaCalendarAlt } from 'react-icons/fa';
 import { FaRegEdit } from 'react-icons/fa';
-import { useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import '../App.css';
 
 function ProjectOverview() {
-    const [Pages, setPages] = useState(1); // Navigate pages
+    const [Pages, setPages] = useState(1);
     const [selectedProject, setSelectedProject] = useState(null);
 
-
-    // Callback function to receive data from child
     const handlePageChange = (page, project = null) => {
         setPages(page);
         if (project) {
-            setSelectedProject(project); // Set the selected project
+            setSelectedProject(project);
         }
     };
 
@@ -24,7 +22,7 @@ function ProjectOverview() {
         <>
             {Pages === 1 ? (
                 <MainPart
-                    project={selectedProject} // Pass the entire project object
+                    project={selectedProject}
                     onPageChange={handlePageChange}
                 />
             ) : (
@@ -34,19 +32,19 @@ function ProjectOverview() {
     );
 }
 
+const MainPart = ({ project, onPageChange }) => {
+    const [searchText, setSearchText] = useState('');
+    const [searchBlock, setSearchBlock] = useState(1);
 
+    // Memoized search handler with debounce
+    const handleSearch = useCallback((text) => {
+        setSearchText(text);
+    }, []);
 
-
-
-
-const MainPart = (props) => {
-    // Callback function
+    // Navigation handler
     const handleNavigation = (page) => {
-        props.onPageChange(page); // Send data to parent
+        onPageChange(page);
     };
-
-    const { project } = props; // Destructure props
-    console.log(project);
 
     const subsectionData = {
         priority: project?.priority || "Not specified",
@@ -70,17 +68,20 @@ const MainPart = (props) => {
                 </div>
             </div>
 
-            <SubsectionApp data={subsectionData} />
-
+            <SubsectionApp 
+                data={subsectionData} 
+                onSearch={handleSearch}
+            />
+            
             <SubSection />
-            <TaskPortion />
+            <TaskPortion 
+                block={searchBlock} 
+                searchText={searchText} 
+                project={project}
+            />
         </>
     );
 };
-
-
-
-
 
 function formatDate(date) {
     const months = [
@@ -95,16 +96,9 @@ function formatDate(date) {
     return `${day}-${month}-${year}`;
 }
 
-
-
-
-
-
 const ProjectCardview = ({ onPageChange }) => {
     const today = new Date();
 
-
-    //TempData
     const projects = [
         {
             id: 1,
@@ -131,14 +125,9 @@ const ProjectCardview = ({ onPageChange }) => {
             duedate: `03-May-2025`,
             priority: 'High',
             team: ['Digital', 'Phlabo'],
-            tags: ["meetings", "development" ,"ux-research"]
+            tags: ["meetings", "development", "ux-research"]
         }
     ];
-
-
-
-
-    
 
     return (
         <div className='card-container'>
@@ -146,7 +135,7 @@ const ProjectCardview = ({ onPageChange }) => {
                 <div
                     key={project.id}
                     className='card'
-                    onClick={() => onPageChange(1, project)} // Pass the entire project object
+                    onClick={() => onPageChange(1, project)}
                 >
                     <h3>{project.name}</h3>
                     <p>{project.description}</p>

@@ -584,6 +584,7 @@
   line-height: 35px;
   font-size: 13px;
   padding: 0 10px;
+  cursor: pointer;
   user-select: none;
 }
 
@@ -763,3 +764,7 @@
 
 
 
+.higlighter{
+  font-weight: 650;
+  font-size: 14px !important;
+}
