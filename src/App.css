@@ -584,7 +584,6 @@
   line-height: 35px;
   font-size: 13px;
   padding: 0 10px;
-  cursor: pointer;
   user-select: none;
 }
 
@@ -674,6 +673,10 @@
   scroll-snap-align: end;
 }
 
+.App .taskcontainer .main_tskcnt .w_thr .slider_bx .T_blocks,
+.App .taskcontainer .main_tskcnt .w_frt .slider_bx .T_blocks {
+  background-color: rgba(239, 239, 239) !important;
+}
 .App .taskcontainer .main_tskcnt .cnt .slider_bx .T_blocks>div {
   height: 20px;
   border-radius: 3px;

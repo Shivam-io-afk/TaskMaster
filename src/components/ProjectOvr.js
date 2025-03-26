@@ -34,7 +34,6 @@ function ProjectOverview() {
 
 const MainPart = ({ project, onPageChange }) => {
     const [searchText, setSearchText] = useState('');
-    const [searchBlock, setSearchBlock] = useState(1);
 
     // Memoized search handler with debounce
     const handleSearch = useCallback((text) => {
@@ -48,7 +47,7 @@ const MainPart = ({ project, onPageChange }) => {
 
     const subsectionData = {
         priority: project?.priority || "Not specified",
-        duedate: project?.duedate || "No due date",
+        duedate: project?.duedate || " - No due date",
         tags: project?.tags || ['---','---','---'],
         team: project?.team || ['---','---','---']
     };
@@ -75,7 +74,6 @@ const MainPart = ({ project, onPageChange }) => {
             
             <SubSection />
             <TaskPortion 
-                block={searchBlock} 
                 searchText={searchText} 
                 project={project}
             />
