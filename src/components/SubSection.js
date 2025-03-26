@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, use } from 'react';
 import '../App.css';
 import { FaCirclePlus, FaX, FaArrowRight, FaArrowLeft } from 'react-icons/fa6';
 import { Dropdown } from 'primereact/dropdown';
@@ -81,8 +81,7 @@ const SubSection = () => {
 
 
 function Taskadder(prop) {
-    // console.clear();
-    console.log(prop);
+    console.clear();
     const [taskName, setTaskName] = useState();
     const [Condition, setCondition] = useState(1);
     const [startTime, setStartTime] = useState('Start-Time');
@@ -139,11 +138,17 @@ function FloatingInputLabel({ label, value = "", onChange, type = "text" }) {
     const [focused, setFocused] = useState(false);
     const [selectfill, setselectfill] = useState(null);
 
+    let inputref = useRef(null);
 
     const filter = [
         { name: 'To-Do' },
         { name: 'In-Progress' },
     ];
+
+    const HandleClear = () => {
+        if(onChange)
+            onChange({ target: { value: '' } })
+    }
 
     return (
         <div className={`input-container ${focused || value ? "focused" : ""}`}>
@@ -153,8 +158,9 @@ function FloatingInputLabel({ label, value = "", onChange, type = "text" }) {
                 value={value}
                 onChange={onChange}
                 onFocus={() => setFocused(true)}
-                onBlur={() => setFocused(value.length > 0)} />
-            <FaX className='icon' />
+                onBlur={() => setFocused(value.length > 0)}
+                ref={inputref} />
+            <FaX className='icon' onClick={HandleClear}/>
             <div className='filters'>
                 <div className="card flex justify-content-center">
                     <Dropdown value={selectfill} onChange={(e) => setselectfill(e.value)} options={filter} optionLabel="name" placeholder="To-Do" className="w-full md:w-14rem filterDrop" />

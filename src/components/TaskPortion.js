@@ -13,7 +13,7 @@ const tasks = () => {
     ]
 
 
-    const BGcolor = ['bg_1', 'bg_2', 'bg_3', "bg_4", 'bg_1', 'bg_2', 'bg_3', "bg_4", 'bg_1', 'bg_2', 'bg_3', "bg_4", 'bg_1', 'bg_2', 'bg_3', "bg_4"];
+    const BGcolor = ['bg_1', 'bg_2', 'bg_3', "bg_4"];
 
     return (
         <div className="taskcontainer">
@@ -45,7 +45,7 @@ const tasks = () => {
                     </div>
                 </div>
                 <div className="cnt w_sc">
-                    <div className="indicator">In Progress <div><FaListCheck className='icns'/><span>12</span></div></div>
+                    <div className="indicator">In Progress <div><FaSpinner className='icns'/><span>12</span></div></div>
                     <div className="slider_bx">
                         <div className='T_blocks bg_3'></div>
                         <div className='T_blocks bg_1'></div>
@@ -53,7 +53,7 @@ const tasks = () => {
                     </div>
                 </div>
                 <div className="cnt w_thr">
-                    <div className="indicator">Completed <div><FaListCheck className='icns'/><span>12</span></div></div>
+                    <div className="indicator">Completed <div><FaCheck className='icns'/><span>12</span></div></div>
                     <div className="slider_bx">
                         <div className='T_blocks bg_4'></div>
                         <div className='T_blocks bg_4'></div>
@@ -61,7 +61,7 @@ const tasks = () => {
                     </div>
                 </div>
                 <div className="cnt w_frt">
-                    <div className="indicator">Overdue <div><FaListCheck className='icns'/><span>12</span></div></div>
+                    <div className="indicator">Overdue <div><FaClock className='icns'/><span>12</span></div></div>
                     <div className="slider_bx">
                         <div className='T_blocks bg_4'></div>
                         <div className='T_blocks bg_4'></div>

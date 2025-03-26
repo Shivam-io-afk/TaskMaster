@@ -46,6 +46,7 @@ const MainPart = (props) => {
     };
 
     const { project } = props; // Destructure props
+    console.log(project);
 
     const subsectionData = {
         priority: project?.priority || "Not specified",
@@ -60,7 +61,7 @@ const MainPart = (props) => {
                 <MyComponent />
                 <div className='context'>
                     <p>{project?.name || "Hello World"}<FaRegEdit className='incs' style={{ cursor: "pointer" }} /></p>
-                    <p><FaCalendarAlt className='incs' />{project?.duedate || "No due date"}</p>
+                    <p>Assigned on - &nbsp;<FaCalendarAlt className='incs' />{project?.duedate || "No due date"}</p>
                     <span className='dir_span'>
                         <span onClick={() => handleNavigation(0)}> Dashboard </span>
                         <b> / </b>

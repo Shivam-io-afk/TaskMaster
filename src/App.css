@@ -348,8 +348,9 @@
   padding-left: 15px;
   border: none;
   border-radius: 9px;
-  font-size: 13px;
+  font-size: 14px;
   text-transform: capitalize;
+  font-family: var(--font2);
 }
 
 .App .midBanner .container_right .input_area input::placeholder {
@@ -399,7 +400,6 @@
 
 
 .App .box_container .btn_tsk button {
-  margin-top: 2px;
   height: 35px;
   width: 120px;
   background-color: #F99639;
@@ -413,10 +413,12 @@
   align-items: center;
   font-family: var(--font1);
   font-weight: 300;
+  transition: 0.1s cubic-bezier(0.47, 0, 0.745, 0.715);
 }
 
 .App .box_container .btn_tsk button:hover {
-  background-color: #f99639af;
+  background-color: #ff8614af;
+  transform: scale(1.02);
 }
 
 .App .box_container .btn_tsk button .incs {
