@@ -53,20 +53,14 @@
     position: relative;
     top: 30px;
     height: 60px;
-    width: 100%;
+    width: 230px;
     border: 1px solid #c6c4c4;
     border-radius: 9px;
-
-    /* 
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    border-bottom: none; */
-
     z-index: 2;
 }
 
 
-.mainContainer .container_scnd>.box {
+.mainContainer .container_scnd > .box {
     position: relative;
     display: flex;
     justify-content: flex-start;
@@ -75,7 +69,6 @@
     width: 100%;
     font-family: var(--font2);
     padding: 0 10px;
-    border-radius: 9px;
 }
 
 
@@ -147,7 +140,7 @@
 
 .mainContainer .container_scnd .userLists {
     height: 150px;
-    width: 100%;
+    width: 229px;
     border: 1px solid #c6c4c4;
     background-color: #F9F9F9;
     padding: 5px 0;
@@ -155,23 +148,51 @@
     border-top: none;
     border-bottom-right-radius: 9px;
     border-bottom-left-radius: 9px;
-    padding-top: 20px;
-    display: none;
+    padding-top: 10px;
 }
 
 .mainContainer .container_scnd .userLists .box {
     position: relative;
     display: flex;
-    height: 60px;
+    height: 50px;
     width: 100%;
     font-family: var(--font2);
     padding: 0 10px;
-    border-radius: 9px;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 5px 0;
 }
+
+.mainContainer .container_scnd .userLists .box:nth-child(2n-1)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: 1px;
+    width: 90%;
+    background-color: rgb(222, 221, 221);
+}
+
+.mainContainer .container_scnd .userLists .box:nth-child(2n-2)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: 0.2px;
+    width: 90%;
+    background-color: rgb(222, 221, 221);
+}
+
 
 .mainContainer .container_scnd .userLists .box img {
     height: 35px;
     width: 35px;
+    margin-right: 10px;
+    margin-left: 15px;
 }
 
 .mainContainer .container_scnd .userLists .drop {
@@ -181,6 +202,7 @@
     transform: translate(-50%, -50%);
     font-size: 12px;
     cursor: pointer;
+    
 }
 
 .mainContainer .container_scnd .userLists .box span {
@@ -189,7 +211,7 @@
 
 .mainContainer .container_scnd .userLists .box span p {
     font-weight: 100;
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .mainContainer .container_scnd .userLists .box span p .icn {
@@ -208,6 +230,16 @@
 }
 
 
+
+
+
+
+
+
+
+
+
+
 .mainContainer .container_thrd {
     position: relative;
     top: 60px;
@@ -220,7 +252,9 @@
     font-family: var(--font1);
     font-weight: 300;
     font-size: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid rgb(173, 169, 169);
+    padding-bottom: 5px;
 }
 
 
@@ -274,9 +308,9 @@
 
 .mainContainer .container_frth {
     position: relative;
-    top: 80px;
+    top: 90px;
     height: 210px;
-
+    font-weight: 600;
 }
 
 
@@ -284,9 +318,11 @@
     color: #727272;
     font-family: var(--font1);
     font-weight: 300;
-    font-size: 16Wpx;
+    font-size: 16px;
     margin-bottom: 10px;
     width: 100%;
+    border-bottom: 1px solid rgb(173, 169, 169);
+    padding-bottom: 5px;
 }
 
 .mainContainer .container_frth h3 .icns {
@@ -297,8 +333,11 @@
 
 
 
+
 .mainContainer .container_frth .options {
     position: relative;
+    overflow: hidden scroll;
+    height: 145px;
 }
 
 
@@ -362,4 +401,33 @@
     margin: 2px;
     border-radius: 9px;
 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.icns{
+    cursor: pointer;
+}
+
+.rem{
+    border-bottom-right-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+    border-bottom:none  !important ;
 }
