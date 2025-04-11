@@ -542,7 +542,7 @@
 /* ----------------------------------------------------------- */
 
 .App .taskcontainer {
-  height: 378px;
+  height: 48%;
   width: 100%;
   margin-top: 5px;
   display: flex;
@@ -752,22 +752,97 @@
 
 
 
+/* ------error_box------ */
+.alert-box {
+  position: absolute;
+  bottom: 10px;
+  right: -400px;
+  height: 40px;
+  width: 300px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  color: #fff;
+  font-weight: 600;
+  animation: slide-in 0.8s ease-in-out forwards;
+  padding-bottom: 6px;
+}
+
+/* Colors for Different Types */
+.success {
+  background-color: #77de7b; 
+  border: 1px solid #388e3c;
+}
+
+.error {
+  background-color: #f1746b; 
+  border: 1px solid #d32f2f;
+}
+
+.warning {
+  background-color: #f1c17a; 
+  border: 1px solid #f57c00;
+}
+
+.info {
+  background-color: #7cbdf2; 
+  border: 1px solid #1976d2;
+}
+
+.progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  animation: progres 3s linear forwards;
+}
+
+@keyframes slide-in {
+  0% {
+    right: -400px;
+  }
+  100% {
+    right: 10px;
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    right: 10px;
+  }
+  100% {
+    right: -400px;
+  }
+}
+
+
+@keyframes progres {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
 
 
 
 
+.hide {
+  animation: slide-out 0.3s ease-in-out forwards;
+}
+
+.hideporgress{
+  display: none;
+}
 
 
 
 
-
-
-
-
-
-
-
-.higlighter{
-  font-weight: 650;
-  font-size: 14px !important;
+.errbox .icns{
+  color: #fff;
 }

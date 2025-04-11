@@ -2,10 +2,11 @@ import { Routes, Route } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import OverviewPage from './components/Overview';
 import PrvTask from './components/PrivateTask';
-
-
+import ErrorIndicator from './components/ErrIndic';
 import ProjectOvr from './components/ProjectOvr';
+import MoreSection from './components/More';
 import './App.css';
+
 
 function App() { 
   useEffect(() => { //Importing CDN 
@@ -50,6 +51,8 @@ function App() {
         <Route path='/prvtask' element={<Page3 />}></Route>
         <Route path='/' element={<Page4 />}></Route>
       </Routes>
+
+    <ErrorIndicator/>
     </div>
   );
 }
@@ -93,7 +96,7 @@ const Page3 = () => {
 const Page4 = () => {
   return (
     <>
-      <h1>This is Categories Page</h1>
+      <MoreSection/>
     </>
   );
 }

@@ -1,7 +1,7 @@
 import '../styles/sideBar.css';
 import MainImg from '../images/profile.png';
 import HanuJi from '../images/profile.png';
-import { FaAngleDown, FaAngleUp } from "react-icons/fa";
+import { FaAngleDown, FaAngleUp, FaPlus } from "react-icons/fa";
 import { FaGear } from "react-icons/fa6";
 import { FaLayerGroup } from 'react-icons/fa';
 import { FaNetworkWired } from 'react-icons/fa';
@@ -73,6 +73,14 @@ function SideBar() {
                                     <p>xyz@gmail.com</p>
                                 </span>
                             </div>
+
+                            <div className='box'>
+                                <FaPlus/>
+                                <span>
+                                    <p>Add More</p>
+                                </span>
+                            </div>
+
                         </div>
                         :
                         null
@@ -105,7 +113,7 @@ function SideBar() {
                     <NavLink to={'/'}>
                         <li>
                             <FaLayerGroup className='incs' />
-                            <span>Create Meeting</span>
+                            <span>More</span>
                         </li>
                     </NavLink>
                     <li><FaGear className='incs' /><span>Settings</span></li>
@@ -142,6 +150,7 @@ function SideBar() {
                 <li><FaMoon className='icns' />Dark</li>
                 <li className='active'></li>
             </div>
+
         </div>
     )
 }
