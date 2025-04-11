@@ -16,14 +16,17 @@
 }
 
 
+html{
+  overflow: hidden scroll ;
+}
 
 .main {
   position: relative;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 775px;
   width: 100vw;
-  overflow: hidden;
+  overflow: hidden ;
 }
 
 
@@ -755,7 +758,7 @@
 /* ------error_box------ */
 .alert-box {
   position: absolute;
-  bottom: 10px;
+  top: 10px;
   right: -400px;
   height: 40px;
   width: 300px;
@@ -768,6 +771,7 @@
   font-weight: 600;
   animation: slide-in 0.8s ease-in-out forwards;
   padding-bottom: 6px;
+  z-index: 5;
 }
 
 /* Colors for Different Types */

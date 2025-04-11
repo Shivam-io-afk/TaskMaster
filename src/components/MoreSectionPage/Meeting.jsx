@@ -12,6 +12,12 @@ const meetings = [
     time: '2:00 PM - 3:00 PM',
     date: 'April 13, 2025',
     participants: ['You', 'AI Bot', 'Ravi']
+  },
+  {
+    title: 'AI Summary Planning',
+    time: '2:00 PM - 3:00 PM',
+    date: 'April 13, 2025',
+    participants: ['You', 'AI Bot', 'Ravi']
   }
 ];
 

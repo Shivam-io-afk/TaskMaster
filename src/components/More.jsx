@@ -8,10 +8,10 @@ import "../styles/morepage.css";
 function MoreSection() {
     return (
         <div className="dashboard_more">
-            <div className="dash_boxes"><Meetings /></div>
-            <div className="dash_boxes"><AIChatBox /></div>
-            <div className="dash_boxes"><RealTimeChat /></div>
-            <div className="dash_boxes"><TaskPrioritization /></div>
+            <div className="box1"><Meetings /></div>
+            <div className="box4"><AIChatBox /></div>
+            <div className="box2"><RealTimeChat /></div>
+            <div className="box3"><TaskPrioritization /></div>
         </div>
     );
 }
