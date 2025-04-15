@@ -21,19 +21,24 @@ const meetings = [
   }
 ];
 
+console.log();
 const MeetingSchedule = () => {
   return (
     <div className="meeting-container">
       <h2>📅 Meeting Schedule</h2>
       <div className="meeting-list">
-        {meetings.map((meeting, index) => (
-          <div key={index} className="meeting-card">
-            <h3>{meeting.title}</h3>
-            <p><strong>Date:</strong> {meeting.date}</p>
-            <p><strong>Time:</strong> {meeting.time}</p>
-            <p><strong>Participants:</strong> {meeting.participants.join(', ')}</p>
-          </div>
-        ))}
+      <span className={meetings.length > 0 ? `indication color2` : `indication color1`}>No Meeting Scheduled.</span>
+        {
+          meetings.map((meeting, index) => (
+            <div key={index} className="meeting-card">
+              <h3>{meeting.title}</h3>
+              <p><strong>Date:</strong> {meeting.date}</p>
+              <p><strong>Time:</strong> {meeting.time}</p>
+              <p><strong>Participants:</strong> {meeting.participants.join(', ')}</p>
+            </div>
+
+          ))
+        }
       </div>
     </div>
   );

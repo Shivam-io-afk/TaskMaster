@@ -32,7 +32,7 @@ function MainPage() {
         <div className="mainBx">
             <div className='contFrst'>
                 <div className='entrance'>
-                    <h1>Hello, <span> Joseph</span>
+                    <h1>Hello, <span> Shivam</span>
                         <span className='handing'>✋🏼</span>
                     </h1>
                     <HtmlTooltip   placement="left" style={{ position: "absolute", right: "-10px", zIndex: "5" }}

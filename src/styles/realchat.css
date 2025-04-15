@@ -1,0 +1,344 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Fjalla+One&family=Gabarito:wght@100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kanit:wght@100..900&family=Oswald:wght@200..700&display=swap');
+
+:root {
+    --font1: "Kanit", sans-serif;
+    --font2: "Gabarito", sans-serif;
+    --font3: "Oswald", sans-serif;
+    --font4: "Josefin Sans", sans-serif;
+}
+
+
+.dashboard_more .chat-container {
+    display: flex;
+    flex-direction: row;
+    width: 480px;
+    height: 415px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    background-color: #fff;
+    overflow: hidden;
+    position: relative;
+    font-family: var(--font2);
+}
+
+/* Sidebar */
+.dashboard_more .chat-container .chat-sidebar {
+    width: 200px;
+    background-color: white;
+    border-right: 2px solid #ffddb3;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.dashboard_more .chat-container .chat-sidebar h3 {
+    margin-left: 120px;
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: black;
+}
+
+.dashboard_more .chat-container .chat-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dashboard_more .chat-container .chat-sidebar li {
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    background-color: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+    color: #333;
+}
+
+.dashboard_more .chat-container .chat-sidebar li:hover {
+    background-color: #ffe5cc;
+}
+
+.dashboard_more .chat-container .chat-sidebar li.active {
+    color: #f99639;
+    border: 1px solid #f99639;
+}
+
+.dashboard_more .chat-container .chat-sidebar .status {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.dashboard_more .chat-container .chat-sidebar .status.online {
+    background-color: #4caf50;
+}
+
+.dashboard_more .chat-container .chat-sidebar .status.offline {
+    background-color: #ccc;
+}
+
+/* Chat Box */
+.dashboard_more .chat-container .chat-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #fffaf7;
+    position: relative;
+}
+
+.dashboard_more .chat-container .chat-header {
+    background-color: #fff5ed;
+    padding: 15px 20px;
+    border-bottom: 2px solid #ffd8b2;
+    font-weight: 600;
+    font-size: 15px;
+    color: black;
+}
+
+
+.dashboard_more .chat-container .makespace{
+    padding-left: 55px;
+}
+
+.dashboard_more .chat-container .chat-body {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dashboard_more .chat-container .message {
+    max-width: 70%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.dashboard_more .chat-container .message.me {
+    align-self: flex-end;
+    background-color: #f99639;
+    color: #fff;
+}
+
+.dashboard_more .chat-container .message.other {
+    align-self: flex-start;
+    background-color: #ffe5cc;
+    color: #333;
+}
+
+/* Typing indicator */
+.dashboard_more .chat-container .typing-indicator {
+    font-size: 12px;
+    color: #999;
+    padding-left: 10px;
+    margin-top: -5px;
+}
+
+/* Chat Footer */
+.dashboard_more .chat-container .chat-footer {
+    padding: 10px 10px;
+    display: flex;
+    border-top: 1px solid #ffd8b2;
+    background-color: #fff5ed;
+}
+.dashboard_more .chat-container .chat-footer input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ffcc99;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-right: 10px;
+    outline: none;
+    font-family: var(--font2);
+}
+
+.dashboard_more .chat-container .chat-footer button {
+    background-color: #f99639;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+
+.dashboard_more .chat-container .chat-footer button:hover {
+    background-color: #d87f29;
+}
+
+
+/* Scroll Button */
+.dashboard_more .chat-container .scroll-btn {
+    position: absolute;
+    bottom: 80px;
+    right: 20px;
+    background-color: #fff;
+    color: #999;
+    border: 1px solid #777;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-weight: 800;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+
+/* Hamburger button styles */
+.hamburger {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    z-index: 1001;
+    color: #333;
+    padding: 5px;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-right: 10px;
+    color: #fff;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .chat-container:not(.sidebar-open) .chat-sidebar {
+        transform: translateX(-100%);
+    }
+
+    .chat-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        z-index: 1000;
+        transition: transform 0.3s ease;
+    }
+
+    .chat-box {
+        margin-left: 0;
+    }
+}
+
+
+
+
+
+
+
+
+.chat-box .typing-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    color: #777;
+    height: 20px;
+}
+
+.chat-box .typing-indicator span {
+    margin-left: 4px;
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: #aaa;
+    border-radius: 50%;
+    animation: blink 1.4s infinite both;
+}
+
+.chat-box .typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.chat-box .typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes blink {
+
+    0%,
+    80%,
+    100% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    40% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Hamburger icon */
+
+.dashboard_more .chat-container{
+    position: relative;
+}
+
+  
+  /* Mobile view changes */
+  @media (max-width: 768px) {
+    .dashboard_more .chat-container .chat-sidebar {
+      display: none;
+    }
+  
+    .dashboard_more .chat-container.show-sidebar .chat-sidebar {
+      display: block;
+    }
+  
+    .dashboard_more .chat-container .hamburger {
+      display: block;
+    }
+  
+    .dashboard_more .chat-container .chat-box {
+      margin-top: 40px;
+    }
+  }
+  
+
+
+
+
+
+
+
+
+
+
+

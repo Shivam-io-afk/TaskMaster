@@ -30,17 +30,30 @@ const AIChat = () => {
   ];
 
 
-  const randomIndex = Math.floor(Math.random() * casualGreetingsB.length);
-  const randomGreeting = casualGreetingsB[randomIndex];
+  const [messages, setMessages] = useState(() => {
+    const saved = localStorage.getItem("mateai-chat-history");
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        console.error("Failed to parse saved messages:", e);
+      }
+    }
+    const randomIndex = Math.floor(Math.random() * casualGreetingsB.length);
+    const randomGreeting = casualGreetingsB[randomIndex];
 
-  const [messages, setMessages] = useState([
-    { role: "assistant", content: randomGreeting },
-    // { role: "user", content: "I need help with my homework." },
-  ]);
+    return [{ role: "assistant", content: randomGreeting }];
+  });
 
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef(null);
+
+  
+  // Save messages to localStorage on change
+  useEffect(() => {
+    localStorage.setItem("mateai-chat-history", JSON.stringify(messages));
+  }, [messages]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -49,8 +62,7 @@ const AIChat = () => {
 
 
 
-
-  // Used For Text Rendering (laTex and mathrex formatting)
+  // Used For Text Rendering (laTex formatting)
   const renderContent = (text) => {
     const latexRegex = /(\\\[.*?\\\]|\\\(.*?\\\)|\$\$.*?\$\$|\$.*?\$|\\[a-zA-Z]+\{.*?\})/g;
     const parts = text.split(latexRegex);
@@ -81,22 +93,34 @@ const AIChat = () => {
           );
         } else {
           const formatted = part
+
+
             // Headings
             .replace(/^### (.*$)/gim, "<h3>$1</h3>")
             .replace(/^## (.*$)/gim, "<h2>$1</h2>")
             .replace(/^# (.*$)/gim, "<h1>$1</h1>")
+
+
             // Lists
             .replace(/^\s*[-*] (.*)/gim, "<li>$1</li>")
             .replace(/^\d+\. (.*)/gim, "<li>$1</li>")
             .replace(/(<li>.*<\/li>)/gim, "<ul>$1</ul>")
+
+
             // Horizontal line
             .replace(/^---$/gim, "<hr/>")
+
+
             // Bold, italic, inline code
             .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
             .replace(/\*(.*?)\*/g, "<em>$1</em>")
             .replace(/`(.*?)`/g, "<code>$1</code>")
+
+
             // Links
             .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')
+
+
             // Line breaks
             .replace(/\n/g, "<br/>");
 
@@ -129,9 +153,9 @@ const AIChat = () => {
       const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
         method: "POST",
         headers: {
-          Authorization: "Bearer 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",
-          "Content-Type": "application/json",
-          "HTTP-Referer": "<YOUR_SITE_URL>",
+          Authorization: "Bearer ",
+          "Content-Type": "taskmaster",
+          "HTTP-Referer": "taskmaster.com",
           "X-Title": "<YOUR_SITE_NAME>",
         },
         body: JSON.stringify({
@@ -156,9 +180,9 @@ const AIChat = () => {
 
   return (
     <div className="card ai-chat">
-      <h2 className="smart-assistant">🤖 Smart Assistant</h2>
+      <h2 className="smart-assistant">🤖 <span style={{ color: "orange" }}>Mate</span>AI</h2>
 
-      <div className="outer-box">
+      <div className="outer-box"> 
         {messages.map((msg, index) => (
           <div key={index} className={`chat-box ${msg.role === "user" ? "user-msg" : "bot-msg"}`}>
             <p>{renderContent(msg.content)}</p>
@@ -184,6 +208,7 @@ const AIChat = () => {
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={(e) => e.key === "Enter" && sendMessage()}
       />
+
     </div>
   );
 };

@@ -195,13 +195,17 @@ function TimeRangePicker({ onChange }) {
 
 
 
-        } else if (time === endTime) {
+        } 
+        else if (time === endTime) {
             setEndTime(null);
+           
             if (onChange) onChange(startTime, null);
-        } else if (!startTime || (startTime && endTime)) {
+        } 
+        else if (!startTime || (startTime && endTime)) {
             setStartTime(time);
             setEndTime(null);
-        } else if (startTime && !endTime && time > startTime) {
+        } 
+        else if (startTime && !endTime && time > startTime) {
             setEndTime(time);
             if (onChange) onChange(startTime, time);
         }

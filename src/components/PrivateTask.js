@@ -155,7 +155,7 @@ const PrvTask = () => {
             <div className='prv_con'>
                 <div className='GreetBox'>
                     <div>
-                        <h2>{`${greeting}, Joseph!`}</h2>
+                        <h2>{`${greeting}, Shivam!`}</h2>
                         <p>{resDay.name}, {formattedDate}</p>
                     </div>
                     <div className="card">

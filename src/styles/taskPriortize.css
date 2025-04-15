@@ -1,0 +1,147 @@
+.dashboard_more .task-prioritization {
+  height: 415px;
+
+}
+
+.dashboard_more .task-prioritization ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+
+
+
+
+.dashboard_more .task-container {
+  height: 415px;
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.dashboard_more .task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.dashboard_more .ai-suggest-btn {
+  font-size: 12px;
+  background: #fff5ec;
+  color: #F99639;
+  border: none;
+  padding: 5px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dashboard_more .task-list {
+  list-style: none;
+  height: 310px;
+  overflow: hidden scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.dashboard_more .task-item {
+  background: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move;
+  transition: transform 0.2s;
+  scroll-snap-align: end;
+}
+
+.dashboard_more .task-item.ai-suggested {
+  border-left: 3px solid #ffaf65;
+}
+
+.dashboard_more .task-item.dragging {
+  opacity: 0.5;
+}
+
+.dashboard_more .task-text{
+  font-size: 13px;
+  font-family: var(--font2);
+}
+
+.dashboard_more .task-content {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.dashboard_more .drag-handle {
+  margin-right: 10px;
+  cursor: move;
+  color: #999;
+}
+
+
+
+.dashboard_more .task-tags {
+  display: flex;
+  gap: 8px;
+  margin-left: 10px;
+}
+
+.dashboard_more .priority {
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.dashboard_more .priority.high {
+  background: #ffebee;
+  color: #d32f2f;
+}
+
+.dashboard_more .priority.medium {
+  background: #fff8e1;
+  color: #ff8f00;
+}
+
+.dashboard_more .time {
+
+  font-size: 12px;
+  color: #777;
+}
+
+.dashboard_more .ai-badge {
+  background: #3a86ff;
+  color: white;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 3px;
+  margin-left: 8px;
+}
+
+.dashboard_more .add-task {
+  display: flex;
+  margin-top: 15px;
+}
+
+.dashboard_more .add-task input {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px 0 0 5px;
+}
+
+.dashboard_more .add-task button {
+  background: #3a86ff;
+  color: white;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  width: 40px;
+  cursor: pointer;
+}

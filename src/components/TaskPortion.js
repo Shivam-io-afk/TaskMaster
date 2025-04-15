@@ -29,6 +29,8 @@ const TaskPortion = ({ block, searchText, project, onBlockChange }) => {
 
     const BGcolor = ['bg_1', 'bg_2', 'bg_3', 'bg_4']; // for background color
 
+
+    
     // Filter tasks based on search text for all sections
     const filteredTasks = useMemo(() => {
         const filterSection = (tasks) => {
@@ -58,6 +60,7 @@ const TaskPortion = ({ block, searchText, project, onBlockChange }) => {
             onBlockChange(newBlock);
         }
     };
+
 
     // Task Box 
     const renderTaskItems = (tasks) => {
