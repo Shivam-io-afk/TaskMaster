@@ -1,4 +1,4 @@
-import DatePicker from 'react-datepicker';
+import DatePicker from 'react-datepicker';  
 import 'react-datepicker/dist/react-datepicker.css';
 import MyComponent from '../components/Bgeffect';
 import SubsectionApp from '../components/SubSection_App';
@@ -61,7 +61,7 @@ const MainPart = ({ project, onPageChange }) => {
             <div className='topBanner'>
                 <MyComponent />
                 <div className='context'>
-                    <p>{project?.name || "Hello World"}<FaRegEdit className='incs' style={{ cursor: "pointer" }} /></p>
+                    <p>{project?.name || "Hello World"}</p>
                     <p>Assigned on - &nbsp;<FaCalendarAlt className='incs' />{project?.duedate || "No due date"}</p>
                     <span className='dir_span'>
                         <span onClick={() => handleNavigation(0)}> Dashboard </span>
@@ -103,7 +103,7 @@ function formatDate(date) {
 
 
 
-//first-screen project-overview 
+// very first-screen project-overview 
 
 
 const ProjectCardview = ({ onPageChange }) => {
@@ -148,11 +148,13 @@ const ProjectCardview = ({ onPageChange }) => {
         setEditingProject(null);
     };
 
+    // cancel Tag
     const handleCancel = (e) => {
         e.stopPropagation();
         setEditingProject(null);
     };
 
+    // add Tag
     const handleAddTag = (e) => {
         e.stopPropagation();
         if (newTag.trim() && !editingProject.tags.includes(newTag)) {
@@ -164,6 +166,7 @@ const ProjectCardview = ({ onPageChange }) => {
         }
     };
 
+    // New Project Tag
     const handleRemoveTag = (e, tag) => {
         e.stopPropagation();
         setEditingProject(prev => ({
@@ -172,6 +175,7 @@ const ProjectCardview = ({ onPageChange }) => {
         }));
     };
 
+    // Add Team
     const handleAddTeamMember = (e) => {
         e.stopPropagation();
         if (newTeamMember.trim() && !editingProject.team.includes(newTeamMember)) {
@@ -183,6 +187,7 @@ const ProjectCardview = ({ onPageChange }) => {
         }
     };
 
+    //Team Meambers
     const handleRemoveTeamMember = (e, member) => {
         e.stopPropagation();
         setEditingProject(prev => ({
@@ -191,6 +196,7 @@ const ProjectCardview = ({ onPageChange }) => {
         }));
     };
 
+        //NewProject Name,Tag,team
     const handleAddNew = () => {
         const newProject = {
             id: Math.max(...projects.map(p => p.id), 0) + 1,

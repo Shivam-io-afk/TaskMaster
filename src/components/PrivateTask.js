@@ -2,37 +2,39 @@ import React, { useState, useRef, useEffect } from "react";
 import '../styles/privateTask.css';
 import { Dropdown } from 'primereact/dropdown';
 import "primereact/resources/themes/lara-light-cyan/theme.css";
-import { FaPlus, FaClock } from 'react-icons/fa';
+import { FaPlus, FaClock, FaTag, FaEdit, FaTrash, FaCheck, FaTimes } from 'react-icons/fa';
 
 const PrvTask = () => {
     const [resDay, setResDay] = useState({ name: 'Today' });
     const [tasks, setTasks] = useState([
         {
+            id: 1,
             task: "Wireframing new product",
             time: "09:00 - 11:00",
             tags: "#Mobal Project",
-            people: ["https://randomuser.me/api/portraits/men/32.jpg"],
             date: new Date().toLocaleDateString('en-GB'),
-            completed: false
+            completed: false,
+            isEditing: false
         },
         {
+            id: 2,
             task: "Weekly meeting",
             time: "11:00 - 13:00",
             tags: "#Futur Project",
-            people: [
-                "https://randomuser.me/api/portraits/women/44.jpg",
-                "https://randomuser.me/api/portraits/men/36.jpg"
-            ],
             date: new Date().toLocaleDateString('en-GB'),
-            completed: false
+            completed: false,
+            isEditing: false
         },
     ]);
 
     const [newTask, setNewTask] = useState("");
+    const [newTag, setNewTag] = useState("");
     const [showTimer, setShowTimer] = useState(false);
+    const [showTagInput, setShowTagInput] = useState(false);
     const [startTime, setStartTime] = useState("");
     const [endTime, setEndTime] = useState("");
     const endTimeRef = useRef(null);
+    const [nextId, setNextId] = useState(3);
 
     const filterDay = [
         { name: 'Yesterday' },
@@ -94,8 +96,36 @@ const PrvTask = () => {
 
     const toggleTaskCompletion = (taskToUpdate) => {
         setTasks(tasks.map(task =>
-            task.task === taskToUpdate.task && task.date === taskToUpdate.date
+            task.id === taskToUpdate.id
                 ? { ...task, completed: !task.completed }
+                : task
+        ));
+    };
+
+    const deleteTask = (taskId) => {
+        setTasks(tasks.filter(task => task.id !== taskId));
+    };
+
+    const startEditing = (taskId) => {
+        setTasks(tasks.map(task =>
+            task.id === taskId 
+                ? { ...task, isEditing: true } 
+                : { ...task, isEditing: false }
+        ));
+    };
+
+    const cancelEditing = (taskId) => {
+        setTasks(tasks.map(task =>
+            task.id === taskId 
+                ? { ...task, isEditing: false } 
+                : task
+        ));
+    };
+
+    const saveEditedTask = (taskId, newTaskData) => {
+        setTasks(tasks.map(task =>
+            task.id === taskId 
+                ? { ...task, ...newTaskData, isEditing: false } 
                 : task
         ));
     };
@@ -119,6 +149,10 @@ const PrvTask = () => {
         }
     };
 
+    const handleAddTag = () => {
+        setShowTagInput(true);
+    };
+
     const confirmTask = () => {
         if (startTime && endTime) {
             const today = new Date();
@@ -134,19 +168,24 @@ const PrvTask = () => {
             }
 
             const taskWithTime = {
+                id: nextId,
                 task: newTask,
                 time: `${startTime} - ${endTime}`,
-                tags: "",
+                tags: newTag ? `#${newTag.replace(/^#/, '')}` : "",
                 people: [],
                 date: today.toLocaleDateString('en-GB'),
-                completed: false
+                completed: false,
+                isEditing: false
             };
 
             setTasks([...tasks, taskWithTime]);
+            setNextId(nextId + 1);
             setNewTask("");
+            setNewTag("");
             setStartTime("");
             setEndTime("");
             setShowTimer(false);
+            setShowTagInput(false);
         }
     };
 
@@ -155,7 +194,7 @@ const PrvTask = () => {
             <div className='prv_con'>
                 <div className='GreetBox'>
                     <div>
-                        <h2>{`${greeting}, Shivam!`}</h2>
+                        <h2>{`${greeting}, Shivam`}<span style={{color:"orange"}}>!</span></h2>
                         <p>{resDay.name}, {formattedDate}</p>
                     </div>
                     <div className="card">
@@ -173,6 +212,10 @@ const PrvTask = () => {
                     <Tasks
                         tasks={filterTasksByDay(resDay)}
                         onToggleComplete={toggleTaskCompletion}
+                        onDelete={deleteTask}
+                        onEdit={startEditing}
+                        onCancelEdit={cancelEditing}
+                        onSaveEdit={saveEditedTask}
                     />
                 </div>
             </div>
@@ -186,7 +229,21 @@ const PrvTask = () => {
                     onChange={(e) => setNewTask(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && handleAddTask()}
                 />
+                <FaTag className={`icons ${newTag ? 'colororg' : ' '}`} onClick={handleAddTag}/>
                 <FaClock className='icons' onClick={() => setShowTimer(true)} />
+
+                {showTagInput && (
+                    <div className="TagContainer">
+                        <input
+                            type="text"
+                            placeholder="Enter tag (without #)"
+                            value={newTag}
+                            onChange={(e) => setNewTag(e.target.value)}
+                            className="tag-input"
+                            onKeyDown={(e) => e.key === "Enter" && setShowTagInput(false)}
+                        />
+                    </div>
+                )}
 
                 {showTimer && (
                     <div className="Timercontainer">
@@ -219,25 +276,83 @@ const PrvTask = () => {
     );
 };
 
-
-const Tasks = ({ tasks, onToggleComplete }) => {
+const Tasks = ({ tasks, onToggleComplete, onDelete, onEdit, onCancelEdit, onSaveEdit }) => {
     return (
         <div className="task-container">
-            {tasks.map((taskItem, index) => (
+            {tasks.map((taskItem) => (
                 <TaskBox
-                    key={index}
+                    key={taskItem.id}
                     {...taskItem}
                     onToggleComplete={() => onToggleComplete(taskItem)}
+                    onDelete={() => onDelete(taskItem.id)}
+                    onEdit={() => onEdit(taskItem.id)}
+                    onCancelEdit={() => onCancelEdit(taskItem.id)}
+                    onSaveEdit={(newData) => onSaveEdit(taskItem.id, newData)}
                 />
             ))}
         </div>
     );
 };
 
+const TaskBox = ({ id, task, time, tags, completed, isEditing, onToggleComplete, onDelete, onEdit, onCancelEdit, onSaveEdit }) => {
+    const [editedTask, setEditedTask] = useState(task);
+    const [editedTime, setEditedTime] = useState(time);
+    const [editedTags, setEditedTags] = useState(tags);
 
+    const handleSave = () => {
+        onSaveEdit({
+            task: editedTask,
+            time: editedTime,
+            tags: editedTags,
+            completed
+        });
+    };
 
-// TaskBoxe
-const TaskBox = ({ task, time, tags, people, completed, onToggleComplete }) => {
+    //press to confirm
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleSave();
+        }
+    };
+
+    if (isEditing) {
+        return (
+            <div className={`task-box editing ${completed ? "checked" : ""}`}>
+                <div className="task-left">
+                    <input
+                        type="text"
+                        value={editedTask}
+                        onChange={(e) => setEditedTask(e.target.value)}
+                        className="task-edit-input"
+                        onKeyDown={handleKeyDown}
+                    />
+                </div>
+
+                <div className="task-right">
+                    <input
+                        type="text"
+                        value={editedTags}
+                        onChange={(e) => setEditedTags(e.target.value)}
+                        className="tag-edit-input"
+                        onKeyDown={handleKeyDown}
+                    />
+                    <input
+                        type="text"
+                        value={editedTime}
+                        onChange={(e) => setEditedTime(e.target.value)}
+                        onKeyDown={handleKeyDown}
+                        className="time-edit-input"
+                    />
+                </div>
+
+                <div className="task-actions">
+                    <FaCheck className="action-icon save-icon" onClick={handleSave} />
+                    <FaTimes className="action-icon cancel-icon" onClick={onCancelEdit} />
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className={`task-box ${completed ? "checked" : ""}`}>
             <div className="task-left">
@@ -254,8 +369,13 @@ const TaskBox = ({ task, time, tags, people, completed, onToggleComplete }) => {
                 {tags && <span className="task-tag">{tags}</span>}
                 <span className="task-time">{time}</span>
             </div>
+
+            <div className="task-actions">
+                <FaEdit className="action-icon edit-icon" onClick={onEdit} />
+                <FaTrash className="action-icon delete-icon" onClick={onDelete} />
+            </div>
         </div>
     );
 };
 
-export default PrvTask; 
+export default PrvTask;

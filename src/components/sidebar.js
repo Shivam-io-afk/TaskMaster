@@ -145,7 +145,8 @@ function SideBar() {
                             <span>Overview</span>
                         </li>
                     </NavLink>
-                    <NavLink to={'/private'}>
+                    <NavLink to={'/'}> 
+                    {/* private */}
                         <li>
                             <FaListUl className='incs' />
                             <span>Personal List</span>
@@ -157,7 +158,7 @@ function SideBar() {
                             <span>Project Overview</span>
                         </li>
                     </NavLink>
-                    <NavLink to={'/'}>
+                    <NavLink to={'/More'}>
                         <li>
                             <FaLayerGroup className='incs' />
                             <span>Mate AI</span>

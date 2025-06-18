@@ -153,7 +153,7 @@ const AIChat = () => {
       const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
         method: "POST",
         headers: {
-          Authorization: "Bearer ",
+          Authorization: "Bearer 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",
           "Content-Type": "taskmaster",
           "HTTP-Referer": "taskmaster.com",
           "X-Title": "<YOUR_SITE_NAME>",
