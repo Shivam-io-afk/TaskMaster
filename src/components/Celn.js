@@ -1,20 +1,16 @@
-import React, { useState, useEffect } from "react";
-import "../styles/Celendar.css";
+import React, { useState, useEffect, useCallback } from 'react';
+import '../styles/Celendar.css';
 
 const months = [
-  "January", "February", "March", "April", "May", "June", 
+  "January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
 ];
 
-const Calendar = () => {
+export const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [days, setDays] = useState([]);
   
-  useEffect(() => {
-    renderCalendar();
-  }, [currentDate]);
-
-  const renderCalendar = () => {
+  const renderCalendar = useCallback(() => {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
     const firstDayOfMonth = new Date(year, month, 1).getDay();
@@ -42,7 +38,11 @@ const Calendar = () => {
     }
 
     setDays(liDayTag);
-  };
+  }, [currentDate]);
+
+  useEffect(() => {
+    renderCalendar();
+  }, [renderCalendar]);
 
   const handlePrevNext = (direction) => {
     const newMonth = direction === "prev" ? currentDate.getMonth() - 1 : currentDate.getMonth() + 1;
@@ -75,11 +75,7 @@ export const SelectableCal = ({ onDateSelect }) => {
   const [days, setDays] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
 
-  useEffect(() => {
-    renderCalendar();
-  }, [currentDate, selectedDate]);
-
-  const renderCalendar = () => {
+  const renderCalendar = useCallback(() => {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
     const firstDayOfMonth = new Date(year, month, 1).getDay();
@@ -121,13 +117,18 @@ export const SelectableCal = ({ onDateSelect }) => {
     }
 
     setDays(liDayTag);
-  };
+  }, [currentDate, selectedDate]);
+
+  useEffect(() => {
+    renderCalendar();
+  }, [renderCalendar]);
 
   const handleDateClick = (day, month, year) => {
-    const selected = new Date(year, month, day);
-    setSelectedDate(selected);
-    const formattedDate = `${String(day).padStart(2, "0")}-${months[month].substring(0, 3)}-${year}`;
-    onDateSelect(formattedDate);
+    const clickedDate = new Date(year, month, day);
+    setSelectedDate(clickedDate);
+    if (onDateSelect) {
+      onDateSelect(clickedDate);
+    }
   };
 
   const handlePrevNext = (direction) => {

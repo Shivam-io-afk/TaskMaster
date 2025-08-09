@@ -1076,8 +1076,18 @@ td {
 
 
 /* ------error_box------ */
+/* Container for the alert box */
+.alert-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9999;
+  pointer-events: none; /* Allow clicks to pass through the container */
+  width: 100%;
+}
+
 .alert-box {
-  position: absolute;
+  position: fixed;
   top: 10px;
   right: -400px;
   height: 40px;
@@ -1091,7 +1101,8 @@ td {
   font-weight: 600;
   animation: slide-in 0.8s ease-in-out forwards;
   padding-bottom: 6px;
-  z-index: 5;
+  z-index: 9999; /* Increased z-index to ensure it stays on top of all elements */
+  pointer-events: auto; /* Re-enable pointer events for the alert box */
 }
 
 /* Colors for Different Types */
@@ -1172,4 +1183,12 @@ td {
 
 .errbox .icns {
   color: #fff;
+}
+
+.recharts-wrapper{
+  outline: none !important;
+}
+
+g{
+  outline: none !important;
 }

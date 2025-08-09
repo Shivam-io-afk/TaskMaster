@@ -4,6 +4,10 @@ import ChartCategory from './charts/ChartCateg';
 import '../styles/overview.css';
 import { FaRegBell } from 'react-icons/fa';
 import Calendar from './Celn';
+import { useEffect } from 'react';
+import { useGlobalLoader } from '../context/LoaderContext';
+import { useAuth } from '../context/AuthContext';
+
 // import ComponentScheduler from './charts/Scheduler';
 import ComponentScheduler from './charts/ScheduleFullCal';
 import { styled } from '@mui/material/styles';
@@ -11,10 +15,17 @@ import Button from '@mui/material/Button';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 
-
-
 function MainPage() {
-//ToolTip or Notification Section
+    const { markDataLoaded } = useGlobalLoader();
+    const { currentUser } = useAuth();
+
+    // Mark component as loaded immediately
+    useEffect(() => {
+        // Mark data as loaded immediately instead of waiting
+        markDataLoaded();
+    }, [markDataLoaded]);
+
+    //ToolTip or Notification Section
     const HtmlTooltip = styled(({ className, ...props }) => (
         <Tooltip {...props} classes={{ popper: className }} />
     ))(({ theme }) => ({
@@ -27,12 +38,11 @@ function MainPage() {
         },
     }));
 
-
     return (
         <div className="mainBx">
             <div className='contFrst'>
                 <div className='entrance'>
-                    <h1>Hello, <span> Shivam</span>
+                    <h1>Hello <span>{currentUser?.displayName || 'User'}</span>
                         <span className='handing'>✋🏼</span>
                     </h1>
                     <HtmlTooltip   placement="left" style={{ position: "absolute", right: "-10px", zIndex: "5" }}
@@ -88,7 +98,5 @@ function MainPage() {
         </div>
     );
 }
-
-
 
 export default MainPage;

@@ -3,8 +3,10 @@ import '../styles/privateTask.css';
 import { Dropdown } from 'primereact/dropdown';
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 import { FaPlus, FaClock, FaTag, FaEdit, FaTrash, FaCheck, FaTimes } from 'react-icons/fa';
+import { useGlobalLoader } from '../context/LoaderContext';
 
 const PrvTask = () => {
+    const { markDataLoaded } = useGlobalLoader();
     const [resDay, setResDay] = useState({ name: 'Today' });
     const [tasks, setTasks] = useState([
         {
@@ -29,7 +31,7 @@ const PrvTask = () => {
 
     const [newTask, setNewTask] = useState("");
     const [newTag, setNewTag] = useState("");
-    const [showTimer, setShowTimer] = useState(false);
+    const [showTimer, setShowTimer] = useState(true);
     const [showTagInput, setShowTagInput] = useState(false);
     const [startTime, setStartTime] = useState("");
     const [endTime, setEndTime] = useState("");
@@ -57,6 +59,12 @@ const PrvTask = () => {
         }, 1000);
         return () => clearInterval(interval);
     }, [showTimer]);
+
+    // Mark component as loaded immediately
+    useEffect(() => {
+        // Mark data as loaded immediately instead of waiting
+        markDataLoaded();
+    }, [markDataLoaded]);
 
     const getDateForSelectedDay = (selectedDay) => {
         const today = new Date();

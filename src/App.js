@@ -1,14 +1,30 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import OverviewPage from './components/Overview';
 import PrvTask from './components/PrivateTask';
 import ErrorIndicator from './components/ErrIndic';
 import ProjectOvr from './components/ProjectOvr';
 import MoreSection from './components/More';
+import Settings from './components/Setting.js';
+import SessionTimeout from './components/SessionTimeout';
+import { LoaderProvider, useGlobalLoader } from './context/LoaderContext';
 import './App.css';
 
+function AppContent() { 
+  const location = useLocation();
+  const { setContentReady, markDataLoaded } = useGlobalLoader();
 
-function App() { 
+  // Mark content as ready as soon as component mounts
+  useEffect(() => {
+    // Set content as ready after a short delay to ensure loader is visible
+    const timeout = setTimeout(() => {
+      setContentReady();
+      markDataLoaded();
+    }, 1500);
+    
+    return () => clearTimeout(timeout);
+  }, [setContentReady, markDataLoaded]);
+
   useEffect(() => { //Importing CDN 
     const script = document.createElement("script");
     script.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js";
@@ -42,18 +58,27 @@ function App() {
     };
   }, [])
 
-
   return (
     <div className="App">
       <Routes>
-        <Route path='/home' element={<Page1 />}></Route>
-        <Route path='/' element={<Page2 />}></Route>
-        <Route path='/prvtask' element={<Page3 />}></Route>
-        <Route path='/more' element={<Page4 />}></Route>
+        <Route path='/' element={<Page1 />}></Route>
+        <Route path='/Personal' element={<Page2 />}></Route>
+        <Route path='/Projects' element={<Page3 />}></Route>
+        <Route path='/More' element={<Page4 />}></Route>
+        <Route path='/Settings' element={<Page5 />}></Route>
       </Routes>
 
-    <ErrorIndicator/>
+      {/* <ErrorIndicator/> */}
     </div>
+  );
+}
+
+function App() {
+  return (
+    <>
+      <SessionTimeout />
+      <AppContent />
+    </>
   );
 }
 
@@ -70,7 +95,6 @@ const Page1 = () => {
   );
 }
 
-
 const Page2 = () => {
 
   return (
@@ -79,9 +103,6 @@ const Page2 = () => {
     </>
   );
 }
-
-
-
 
 const Page3 = () => {
 
@@ -92,7 +113,6 @@ const Page3 = () => {
   )
 }
 
-
 const Page4 = () => {
   return (
     <>
@@ -100,6 +120,18 @@ const Page4 = () => {
     </>
   );
 }
+
+const Page5  = () => {
+  return(
+    <>
+      <Settings/>
+    </>
+  )
+}
+
+
+
+
 
 
 export default App;

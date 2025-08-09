@@ -16,18 +16,7 @@ const AIChat = () => {
     "O bhai! Kaise madad kar sakta hoon?"
   ];
 
-  const casualGreetingsG = [
-    "Hey there! What can I do for you?",
-    "Yo! Need some help?",
-    "Hiya! What's up?",
-    "Hello! How can I assist you today?",
-    "Sup! How's it going?",
-    "Arre hello! Batao kya help chahiye?",
-    "Haanji, boliye! Kis cheez ka jugaad chahiye?",
-    "Hi Madam Ji! Kya scene hai aaj?",
-    "Namaste ji! Main ready hoon, aap batao kya karna hai?",
-    "O Madam Ji! Kaise madad kar sakta hoon?"
-  ];
+
 
 
   const [messages, setMessages] = useState(() => {
@@ -150,29 +139,79 @@ const AIChat = () => {
     setIsTyping(true);
 
     try {
-      const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-        method: "POST",
+      // Primary API endpoint
+      const primaryUrl = 'https://chatgpt-42.p.rapidapi.com/chat';
+      const primaryOptions = {
+        method: 'POST',
         headers: {
-          Authorization: "Bearer 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",
-          "Content-Type": "taskmaster",
-          "HTTP-Referer": "taskmaster.com",
-          "X-Title": "<YOUR_SITE_NAME>",
+          'x-rapidapi-key': 'ea3814ea5cmsh80fe27bddfd5a2ep123428jsn7ec03919dd95',
+          'x-rapidapi-host': 'chatgpt-42.p.rapidapi.com',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          model: "google/gemini-2.0-flash-thinking-exp-1219:free",
           messages: newMessages,
-        }),
-      });
+          model: 'gpt-4o-mini'
+        })
+      };
 
-      const data = await response.json();
-      console.log(data);
+      let response;
+      let data;
+      let usedFallback = false;
 
-      const rawReply = data.choices[0]?.message?.content || "Sorry, I couldn't understand that.";
+      try {
+        // Try primary API first
+        response = await fetch(primaryUrl, primaryOptions);
+        data = await response.json();
+        
+        // Check if the response indicates a limit reached or other error
+        if (response.status === 429 || !data.choices || data.error) {
+          throw new Error('Primary API limit reached or error occurred');
+        }
+      } catch (primaryError) {
+        console.log('Primary API error:', primaryError);
+        console.log('Switching to fallback API...');
+        
+        // Fallback API endpoint
+        const fallbackUrl = 'https://open-ai21.p.rapidapi.com/chatgpt';
+        const fallbackOptions = {
+          method: 'POST',
+          headers: {
+            'x-rapidapi-key': 'ea3814ea5cmsh80fe27bddfd5a2ep123428jsn7ec03919dd95',
+            'x-rapidapi-host': 'open-ai21.p.rapidapi.com',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            messages: newMessages.map(msg => ({
+              role: msg.role,
+              content: msg.content
+            })),
+            web_access: false
+          })
+        };
+
+        // Try fallback API
+        response = await fetch(fallbackUrl, fallbackOptions);
+        data = await response.json();
+        usedFallback = true;
+      }
+
+      console.log(usedFallback ? 'Fallback API response:' : 'Primary API response:', data);
+
+      let rawReply;
+      if (usedFallback) {
+        // Extract response from fallback API format
+        rawReply = data.result || "Sorry, I couldn't understand that.";
+      } else {
+        // Extract response from primary API format
+        rawReply = data.choices[0]?.message?.content || "Sorry, I couldn't understand that.";
+      }
+      
       const formattedReply = rawReply.replace(/\\\\/g, "\\"); // clean up escaped backslashes
 
       setMessages([...newMessages, { role: "assistant", content: formattedReply }]);
     } catch (err) {
-      setMessages([...newMessages, { role: "assistant", content: "Error: Something went wrong." }]);
+      console.error('Both APIs failed:', err);
+      setMessages([...newMessages, { role: "assistant", content: "Error: Something went wrong with both APIs." }]);
     } finally {
       setIsTyping(false);
     }

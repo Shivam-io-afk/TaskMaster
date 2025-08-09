@@ -1,0 +1,611 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Fjalla+One&family=Gabarito:wght@400..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@200..700&display=swap');
+
+:root {
+    --font1: "Kanit", serif;
+    --font2: "Gabarito", serif;
+    --font3: "Oswald", serif;
+    --font4: "Josefin Sans", serif;
+    --primary-color: #f8980a;
+    --primary-hover: #e28d3d;
+    --primary-light: rgba(248, 152, 10, 0.1);
+    --secondary-color: #6c757d;
+    --success-color: #4CAF50;
+    --danger-color: #dc3545;
+    --light-gray: #f5f5f5;
+    --medium-gray: #ddd;
+    --dark-gray: #555;
+    --text-dark: #333;
+    --text-light: #727272;
+    --white: #fff;
+    --bg-light: #F9F9F9;
+    --border-color: #ddd;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(248, 152, 10, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(248, 152, 10, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(248, 152, 10, 0);
+    }
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-light);
+    background-image: linear-gradient(135deg, rgba(248, 152, 10, 0.05) 0%, rgba(255, 255, 255, 0.05) 100%);
+    padding: 2rem 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-container:before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    z-index: 0;
+    background: radial-gradient(circle, rgba(248, 152, 10, 0.03) 0%, rgba(248, 152, 10, 0) 70%);
+    animation: pulse 15s infinite;
+}
+
+.auth-form-container {
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 450px;
+    overflow: hidden;
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 0.5s ease-out;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow-x: hidden;
+}
+
+.auth-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    background: linear-gradient(to bottom, rgba(248, 152, 10, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
+    overflow: hidden;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.auth-description {
+    padding: 0.8rem 1.5rem 0;
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    animation: fadeIn 0.5s ease-out;
+    font-family: var(--font2);
+}
+
+.tab-button {
+    flex: 1;
+    padding: 1.2rem 1rem;
+    background: none;
+    border: none;
+    font-size: 1.05rem;
+    font-weight: 400;
+    font-family: var(--font1);
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+    z-index: 1;
+    outline: none;
+}
+
+.tab-button:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background-color: var(--primary-color);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+    border-radius: 3px 3px 0 0;
+    opacity: 0;
+}
+
+.tab-button:hover {
+    color: var(--primary-color);
+}
+
+.tab-button:hover:before {
+    width: 30%;
+    opacity: 0.5;
+}
+
+.tab-button.active {
+    color: var(--primary-color);
+    border-bottom: none;
+}
+
+.tab-button.active:before {
+    width: 100%;
+    opacity: 1;
+}
+
+.login-form {
+    padding: 2rem;
+    background-color: var(--white);
+}
+
+.login-form h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+    font-size: 1.5rem;
+    font-family: var(--font1);
+    font-weight: 500;
+}
+
+.form-description {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    font-family: var(--font2);
+}
+
+.social-login {
+    margin-bottom: 1.5rem;
+    animation: fadeIn 0.6s ease-out 0.2s backwards;
+}
+
+.google-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.85rem;
+    background-color: var(--white);
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: var(--font2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    gap: 0.7rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    min-height: 45px;
+}
+
+.google-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+.google-button svg {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.google-button:hover {
+    background-color: var(--light-gray);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.google-button:hover svg {
+    transform: scale(1.1);
+}
+
+.google-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-family: var(--font2);
+    animation: fadeIn 0.6s ease-out 0.3s backwards;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border-color) 15%, var(--border-color) 85%, transparent);
+    transition: all 0.3s ease;
+}
+
+.divider span {
+    padding: 0 1rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+    animation: fadeIn 0.5s ease-out 0.1s backwards;
+}
+
+.form-group:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.form-group:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    font-family: var(--font2);
+    transition: color 0.3s ease;
+}
+
+.form-group:focus-within label {
+    color: var(--primary-color);
+}
+
+.input-with-icon {
+    position: relative;
+    margin-top: 0.5rem;
+}
+
+.input-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+    transition: color 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    padding: 0;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.password-toggle:hover {
+    color: var(--primary-color);
+}
+
+.password-toggle:focus {
+    outline: none;
+    color: var(--primary-color);
+}
+
+/* Password Strength Indicator Styles */
+.password-strength-container {
+    margin-top: 8px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.password-strength-bar {
+    height: 6px;
+    background-color: #e0e0e0;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.password-strength-indicator {
+    height: 100%;
+    width: 0;
+    border-radius: 3px;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.password-strength-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.password-requirements {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: 5px;
+    line-height: 1.4;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.85rem;
+    padding-left: 2.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: var(--font2);
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.input-with-icon input[type="password"],
+.input-with-icon input[type="text"] {
+    padding-right: 40px; /* Make room for the password toggle button */
+}
+
+.form-group input::placeholder {
+    color: var(--text-light);
+    opacity: 0.7;
+    font-size: 0.9rem;
+    transition: opacity 0.3s ease;
+}
+
+.form-group input:hover {
+    border-color: rgba(248, 152, 10, 0.5);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(248, 152, 10, 0.15);
+    background-color: white;
+}
+
+.form-group input:focus::placeholder {
+    opacity: 0.5;
+}
+
+.form-group input:focus + .input-icon {
+    color: var(--primary-color);
+}
+
+.forgot-password {
+    text-align: right;
+    margin-bottom: 1.25rem;
+}
+
+.text-button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    font-family: var(--font2);
+    cursor: pointer;
+    padding: 0;
+    text-decoration: none;
+    position: relative;
+    transition: var(--transition);
+}
+
+.text-button:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--primary-color);
+    transform: scaleX(0.7);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+.text-button:hover {
+    color: var(--primary-hover);
+}
+
+.text-button:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.primary-button {
+    width: 100%;
+    padding: 0.85rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(248, 152, 10, 0.25);
+    letter-spacing: 0.5px;
+}
+
+.primary-button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.6s ease;
+}
+
+.primary-button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(248, 152, 10, 0.3);
+}
+
+.primary-button:hover:before {
+    left: 100%;
+}
+
+.primary-button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(248, 152, 10, 0.25);
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 1rem;
+    font-family: var(--font2);
+}
+
+button[type="submit"]:hover {
+    background-color: var(--primary-hover);
+}
+
+.form-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-family: var(--font2);
+    font-size: 0.9rem;
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.password-reset-info {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background-color: rgba(248, 152, 10, 0.05);
+    border-radius: 8px;
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    border-left: 3px solid var(--primary-color);
+}
+
+.password-reset-info p {
+    margin: 0.25rem 0;
+}
+
+.error-message {
+    color: var(--danger-color);
+    background-color: rgba(220, 53, 69, 0.1);
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.loader-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+
+
+.forgot-password-container {
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.forgot-password-container h2 {
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+    font-family: var(--font1);
+    position: relative;
+    display: inline-block;
+}
+
+.forgot-password-container h2:after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    background-color: var(--primary-color);
+    bottom: -8px;
+    left: 25%;
+    border-radius: 2px;
+}
+
+.back-to-login {
+    margin-top: 1.5rem;
+    display: inline-block;
+    position: relative;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.back-to-login:hover {
+    background-color: rgba(248, 152, 10, 0.1);
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: 1rem;
+    }
+    
+    .login-form {
+        padding: 1.5rem;
+    }
+    
+    .login-form h2 {
+        font-size: 1.25rem;
+    }
+    
+    .google-button {
+        font-size: 0.9rem;
+    }
+}

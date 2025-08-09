@@ -5,12 +5,14 @@ import { FaAngleDown, FaAngleUp, FaPlus, FaEdit, FaTrash } from "react-icons/fa"
 import { FaGear } from "react-icons/fa6";
 import { FaLayerGroup } from 'react-icons/fa';
 import { FaNetworkWired } from 'react-icons/fa';
-import { FaListUl, FaSun, FaMoon } from 'react-icons/fa';
+import { FaListUl } from 'react-icons/fa';
 import { FaWindows } from 'react-icons/fa6';
 import { FaTags } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import '../styles/activeNav.css';
 import { useState, useRef, useEffect } from 'react';
+import { useGlobalLoader } from '../context/LoaderContext';
+import { useAuth } from '../context/AuthContext';
 
 function SideBar() {
     const [showLists, setshowLists] = useState(1);
@@ -25,9 +27,26 @@ function SideBar() {
     const [newTagName, setNewTagName] = useState('');
     const [isAddingTag, setIsAddingTag] = useState(false);
     
+    // Get loader functions
+    const { markDataLoaded, setContentReady } = useGlobalLoader();
+    
+    // Get current user from auth context
+    const { currentUser } = useAuth();
+    
     //ref for the profile dropdown container
     const profileDropdownRef = useRef(null);
 
+    // Mark sidebar as loaded when component mounts
+    useEffect(() => {
+        // Mark data as loaded after a short delay to ensure loader is visible
+        const timeout = setTimeout(() => {
+            markDataLoaded();
+            setContentReady();
+        }, 1000);
+        
+        return () => clearTimeout(timeout);
+    }, [markDataLoaded, setContentReady]);
+    
     // Close dropdown when clicking outside
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -45,9 +64,9 @@ function SideBar() {
     const handleAddTag = () => {
         if (newTagName.trim() && !tags.includes(newTagName)) {
             setTags([...tags, newTagName]);
-            setNewTagName('');
-            setIsAddingTag(false);
         }
+        setNewTagName('');
+        setIsAddingTag(false);
     };
 
     const handleEditTag = (index) => {
@@ -55,9 +74,9 @@ function SideBar() {
             const updatedTags = [...tags];
             updatedTags[index] = newTagName;
             setTags(updatedTags);
-            setEditingTag(null);
-            setNewTagName('');
         }
+        setEditingTag(null);
+        setNewTagName('');
     };
 
     const handleDeleteTag = (index) => {
@@ -77,27 +96,37 @@ function SideBar() {
             </div>
             
             {/* Added ref to the profile dropdown container */}
-            <div className={showListsUsers === 1 ? 'container_scnd rem' : 'container_scnd'} ref={profileDropdownRef}>
+            <div
+                className={showListsUsers === 1 ? 'container_scnd rem' : 'container_scnd'}
+                ref={profileDropdownRef}
+                onClick={(e) => {
+                    // Prevent toggle if clicking the arrow icons
+                    if (
+                        e.target.classList.contains('icns') ||
+                        e.target.closest('.icns')
+                    ) return;
+                    setshowListsUsers(showListsUsers === 1 ? 0 : 1);
+                }}>
                 <div className='box'>
                     <img src={MainImg} alt='' />
                     <span>
-                        <p>Mr Profile
+                        <p>{currentUser?.displayName || 'User Profile'}
                             {
-                                showListsUsers === 1 ? 
-                                    <FaAngleUp 
-                                        className='icns' 
-                                        style={{ marginLeft: "10px" }} 
-                                        onClick={() => setshowListsUsers(0)} 
+                                showListsUsers === 1 ?
+                                    <FaAngleUp
+                                        className='icns'
+                                        style={{ marginLeft: "10px" }}
+                                        onClick={() => setshowListsUsers(0)}
                                     /> :
-                                    <FaAngleDown 
-                                        className='icns' 
-                                        style={{ marginLeft: "10px" }} 
+                                    <FaAngleDown
+                                        className='icns'
+                                        style={{ marginLeft: "10px" }}
                                         onClick={() => setshowListsUsers(1)}
                                         tabIndex="0" // Make it focusable
-                                    />   
+                                    />
                             }
                         </p>
-                        <p>xyz@gmail.com</p>
+                        <p>{currentUser?.email || 'Not signed in'}</p>
                     </span>
                 </div>
 
@@ -106,29 +135,15 @@ function SideBar() {
                         <div className='box'>
                             <img src={HanuJi} alt='' />
                             <span>
-                                <p>Profile - 1</p>
-                                <p>xyz@gmail.com</p>
-                            </span>
-                        </div>
-                        <div className='box'>
-                            <img src={HanuJi} alt='' />
-                            <span>
-                                <p>Profile - 2</p>
-                                <p>xyz@gmail.com</p>
-                            </span>
-                        </div>
-                        <div className='box'>
-                            <img src={HanuJi} alt='' />
-                            <span>
-                                <p>Profile - 3</p>
-                                <p>xyz@gmail.com</p>
+                                <p>{currentUser?.displayName || 'User Profile'}</p>
+                                <p>{currentUser?.email || 'Not signed in'}</p>
                             </span>
                         </div>
 
                         <div className='box last_li' onClick={() => setshowListsUsers(0)}>
-                            <FaPlus className='icns'/>
+                            <FaGear className='icns'/>
                             <span>
-                                <p>Add More</p>
+                                <p>Account Settings</p>
                             </span>
                         </div>
                     </div>
@@ -139,20 +154,20 @@ function SideBar() {
             <div className='container_thrd'>
                 <h3>Menu</h3>
                 <div className='options'>
-                    <NavLink to={'/home'}>
+                    <NavLink to={'/'}>
                         <li className=''>
                             <FaWindows className='incs' />
                             <span>Overview</span>
                         </li>
                     </NavLink>
-                    <NavLink to={'/'}> 
+                    <NavLink to={'/Personal'}> 
                     {/* private */}
                         <li>
                             <FaListUl className='incs' />
                             <span>Personal List</span>
                         </li>
                     </NavLink>
-                    <NavLink to={'/prvtask'}>
+                    <NavLink to={'/Projects'}>
                         <li>
                             <FaNetworkWired className='incs' />
                             <span>Project Overview</span>
@@ -164,12 +179,27 @@ function SideBar() {
                             <span>Mate AI</span>
                         </li>
                     </NavLink>
-                    <li><FaGear className='incs' /><span>Settings</span></li>
+                    <NavLink to={'/Settings'}>
+                        <li>
+                            <FaGear className='incs' />
+                            <span>Settings</span>
+                        </li>
+                    </NavLink>
                 </div>
             </div>
 
             <div className='container_frth'>
-                <h3>
+                <h3
+                    onClick={e => {
+                        // Prevent toggle if clicking the arrow icons
+                        if (
+                            e.target.classList.contains('icns') ||
+                            e.target.closest('.icns')
+                        ) return;
+                        setshowLists(showLists === 1 ? 0 : 1);
+                    }}
+                    style={{ cursor: 'pointer' }}
+                >
                     Tags {showLists === 1 ? 
                         <FaAngleUp className='icns' onClick={() => setshowLists(0)} /> : 
                         <FaAngleDown className='icns' onClick={() => setshowLists(1)} />
@@ -240,11 +270,13 @@ function SideBar() {
                 )}
             </div>
 
-            <div className='buttons_cntr'>
+            {/*  this featur for future version  */}
+
+            {/* <div className='buttons_cntr'>
                 <li><FaSun className='icns' />Light</li>
                 <li><FaMoon className='icns' />Dark</li>
                 <li className='active'></li>
-            </div>
+            </div> */}
         </div>
     )
 }

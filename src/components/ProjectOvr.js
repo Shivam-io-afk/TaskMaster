@@ -3,17 +3,26 @@ import 'react-datepicker/dist/react-datepicker.css';
 import MyComponent from '../components/Bgeffect';
 import SubsectionApp from '../components/SubSection_App';
 import SubSection from '../components/SubSection';
-import TaskPortion from '../components/TaskPortion';
+import TaskPortion from './TaskPortion';
 import { FaCalendarAlt } from 'react-icons/fa';
 import { FaRegEdit } from 'react-icons/fa';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import '../App.css';
 import {  FaTrash } from 'react-icons/fa';
 import { FaSave, FaTimes } from 'react-icons/fa';
+import { useGlobalLoader } from '../context/LoaderContext';
 
 function ProjectOverview() {
     const [Pages, setPages] = useState(0); // this handels Project overview 
     const [selectedProject, setSelectedProject] = useState(null);
+    const { markDataLoaded, setContentReady } = useGlobalLoader();
+
+    // Mark component as loaded immediately
+    useEffect(() => {
+        // Mark data as loaded immediately instead of waiting
+        markDataLoaded();
+        setContentReady();
+    }, [markDataLoaded, setContentReady]);
 
     const handlePageChange = (page, project = null) => {
         setPages(page);

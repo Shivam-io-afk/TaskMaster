@@ -7,6 +7,9 @@ function ShowAlert({ type = "error", message = "Something went wrong!" }) {
     const [isClosing, setIsClosing] = useState(false);
 
     useEffect(() => {
+        // Ensure the alert is visible at the top of the viewport
+        window.scrollTo(0, 0);
+        
         const timer = setTimeout(() => {
             handleClose();
         }, 3000);

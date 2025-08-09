@@ -102,8 +102,9 @@
     height: 300px;
     overflow: hidden scroll;
     padding-right: 10px;
-    cursor: pointer;
-    scroll-snap-type: y mandatory;
+    /* scroll-snap-type: y mandatory; */
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .dashboard_more .meeting-card {
@@ -113,7 +114,12 @@
     padding: 15px;
     scroll-snap-align: end;
     transition: 0.2s;
+    cursor: pointer;
     z-index: 3;
+}
+
+.dashboard_more .meeting-card:hover{
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 .dashboard_more .meeting-card h3 {
@@ -124,7 +130,7 @@
 
 .dashboard_more .meeting-card p {
     margin: 4px 0;
-    font-size: 0.95rem;
+    font-size: 0.75rem;
 }
 
 /* --------------------- Smart Assistant --------------------- */

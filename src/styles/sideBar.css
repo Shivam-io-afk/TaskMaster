@@ -56,9 +56,13 @@
     width: 230px;
     border: 1px solid #c6c4c4;
     border-radius: 9px;
+    cursor: pointer;
     z-index: 2;
 }
 
+svg{
+    outline: none !important;
+}
 
 .mainContainer .container_scnd>.box {
     position: relative;
@@ -109,11 +113,16 @@
 
 .mainContainer .container_scnd>.box span {
     margin-left: 20px;
+    max-width: 150px;
+    overflow: hidden;
 }
 
 .mainContainer .container_scnd>.box span p {
     font-weight: 100;
     font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .mainContainer .container_scnd>.box span p .icn {
@@ -227,11 +236,16 @@
 
 .mainContainer .container_scnd .userLists .box span {
     margin-left: 10px;
+    max-width: 150px;
+    overflow: hidden;
 }
 
 .mainContainer .container_scnd .userLists .box span p {
     font-weight: 100;
     font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .mainContainer .container_scnd .userLists .box span p .icn {
@@ -298,6 +312,7 @@
     font-weight: 400;
     border-radius: 6px;
     text-decoration: none;
+    overflow: hidden;
 }
 
 .mainContainer .container_thrd .options a {
@@ -306,12 +321,19 @@
 
 .mainContainer .container_thrd .options li .incs {
     margin: 0 15px;
+    flex-shrink: 0;
 }
 
 .mainContainer .container_thrd .options .active {
     background-color: #F99639;
     color: #fff;
     border-radius: 6px;
+}
+
+.mainContainer .container_thrd .options li span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .active>li {
@@ -374,11 +396,13 @@
     align-items: center;
     cursor: pointer;
     border-radius: 6px;
+    overflow: hidden;
 }
 
 
 .mainContainer .container_frth .options li .incs {
     margin: 0 10px;
+    flex-shrink: 0;
 }
 
 
@@ -389,6 +413,14 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    overflow: hidden;
+}
+
+.mainContainer .container_frth .tag-content span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
 }
 
 .mainContainer .container_frth .tag-actions {
@@ -479,11 +511,16 @@
     z-index: 2;
     font-size: 14px;
     cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 50%;
 }
 
 .mainContainer .buttons_cntr li .icns {
     margin-right: 10px;
     margin-left: -10px;
+    flex-shrink: 0;
 }
 
 .mainContainer .buttons_cntr .active {
