@@ -15,7 +15,7 @@ This project uses Firebase for authentication. The following authentication meth
 - Email/Password login and registration
 - Google Sign-in
 - Password reset functionality
-
+<!--
 For detailed setup instructions, please refer to the [Firebase Setup Guide](./FIREBASE_SETUP.md).
 
 ## Project Structure
@@ -24,7 +24,7 @@ For detailed setup instructions, please refer to the [Firebase Setup Guide](./FI
 - `/src/firebase` - Firebase configuration and authentication services
 - `/src/styles` - CSS stylesheets
 - `/src/utils` - Utility functions including error handling
-
+-->
 ## Getting Started
 
 ### Prerequisites
@@ -37,9 +37,9 @@ For detailed setup instructions, please refer to the [Firebase Setup Guide](./FI
    ```
    npm install
    ```
-3. Configure Firebase:
+<!-- 3. Configure Firebase:
    - Follow the instructions in the [Firebase Setup Guide](./FIREBASE_SETUP.md)
-   - Ensure your `.env.local` file is properly configured with your Firebase credentials
+   - Ensure your `.env.local` file is properly configured with your Firebase credentials -->
 
 ### Running the Application
 ```
@@ -54,8 +54,9 @@ npm run build
 ## Error Handling
 The application includes a custom error handling system that displays alerts for various operations. The alerts are positioned at the top of the viewport and include different styles for success, error, warning, and info messages.
 
+<!--
 ## Firebase Project Information
 This project is configured with the following Firebase details:
 - Project ID: `taskmaster-3beb4`
 - Project Number: `779441961434`
-- All Firebase configuration values have been set up in the `.env.local` file
+- All Firebase configuration values have been set up in the `.env.local` file -->
