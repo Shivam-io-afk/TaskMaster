@@ -68,7 +68,7 @@ function AppContent() {
         <Route path='/Settings' element={<Page5 />}></Route>
       </Routes>
 
-      {/* <ErrorIndicator/> */}
+      {/* <ErrorIndicator/> ----- error indicator popup */}
     </div>
   );
 }

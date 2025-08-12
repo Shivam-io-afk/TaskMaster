@@ -7,10 +7,20 @@ import '../styles/settings.css';
 import { FaUser, FaBell, FaLock, FaPalette, FaLanguage, FaDatabase, FaCloudUploadAlt, FaInfoCircle, FaCheck, FaExclamationCircle, FaSignOutAlt } from 'react-icons/fa';
 import { FaGear, FaMoon, FaSun } from 'react-icons/fa6';
 import MainImg from '../images/profile.png';
+// Import avatar images
+import Boy1 from '../images/avatars/boy-1.png';
+import Boy from '../images/avatars/boy.png';
+import Girl1 from '../images/avatars/girl-1.png';
+import Girl from '../images/avatars/girl.png';
+import Man1 from '../images/avatars/man-1.png';
+import Man2 from '../images/avatars/man-2.png';
+import Man3 from '../images/avatars/man-3.png';
+import Man4 from '../images/avatars/man-4.png';
+import Man from '../images/avatars/man.png';
 
 function Settings() {
     const { markDataLoaded, setContentReady } = useGlobalLoader();
-    const { currentUser } = useAuth();
+    const { currentUser, userAvatar, setUserAvatar } = useAuth();
     const navigate = useNavigate();
     const [activeTheme, setActiveTheme] = useState('light');
     const [notificationsEnabled, setNotificationsEnabled] = useState(true);
@@ -24,7 +34,24 @@ function Settings() {
     const [userEmail, setUserEmail] = useState(currentUser?.email || 'xyz@gmail.com');
     const [profileUpdated, setProfileUpdated] = useState(false);
     const [hasChanges, setHasChanges] = useState(false);
+    const [autosaveActive, setAutosaveActive] = useState(false);
     const [loggingOut, setLoggingOut] = useState(false);
+    const [selectedAvatar, setSelectedAvatar] = useState(userAvatar);
+    const [showAvatarSelector, setShowAvatarSelector] = useState(false);
+    
+    // Avatar options
+    const avatarOptions = [
+        { src: Boy1, alt: 'Boy 1' },
+        { src: Boy, alt: 'Boy' },
+        { src: Girl1, alt: 'Girl 1' },
+        { src: Girl, alt: 'Girl' },
+        { src: Man1, alt: 'Man 1' },
+        { src: Man2, alt: 'Man 2' },
+        { src: Man3, alt: 'Man 3' },
+        { src: Man4, alt: 'Man 4' },
+        { src: Man, alt: 'Man' },
+        { src: MainImg, alt: 'Default' }
+    ];
     
     // Store initial values to detect changes
     const initialValues = useRef({
@@ -37,7 +64,8 @@ function Settings() {
         language: 'english',
         primaryColor: '#f8980a',
         autoSave: true,
-        dataBackup: false
+        dataBackup: false,
+        selectedAvatar: MainImg
     });
     
     // Handle logout
@@ -59,6 +87,9 @@ function Settings() {
         setContentReady();
     }, [markDataLoaded, setContentReady]);
     
+    // Reference to store the autosave timer
+    const autosaveTimerRef = useRef(null);
+    
     // Check for changes in any setting
     useEffect(() => {
         const currentValues = {
@@ -71,7 +102,8 @@ function Settings() {
             language,
             primaryColor,
             autoSave,
-            dataBackup
+            dataBackup,
+            selectedAvatar
         };
         
         // Compare current values with initial values
@@ -80,10 +112,46 @@ function Settings() {
         );
         
         setHasChanges(changed);
+        
+        // Clear any existing timer
+        if (autosaveTimerRef.current) {
+            clearTimeout(autosaveTimerRef.current);
+            autosaveTimerRef.current = null;
+        }
+        
+        // Set up autosave timer if changes are detected
+        if (changed) {
+            setAutosaveActive(true);
+            autosaveTimerRef.current = setTimeout(() => {
+                // Create a function that captures the current values
+                const autoSaveFunction = () => {
+                    // Update initial values to current values
+                    initialValues.current = { ...currentValues };
+                    
+                    setProfileUpdated(true);
+                    setHasChanges(false);
+                    setAutosaveActive(false);
+                    setTimeout(() => setProfileUpdated(false), 3000);
+                    console.log('Settings autosaved after 2 minutes of inactivity');
+                };
+                
+                autoSaveFunction();
+            }, 2 * 60 * 1000); // 2 minutes in milliseconds
+        } else {
+            setAutosaveActive(false);
+        }
+        
+        // Clear the timer when component unmounts
+        return () => {
+            if (autosaveTimerRef.current) {
+                clearTimeout(autosaveTimerRef.current);
+                autosaveTimerRef.current = null;
+            }
+        };
     }, [
         userName, userEmail, activeTheme, notificationsEnabled,
         emailNotifications, soundEnabled, language, primaryColor,
-        autoSave, dataBackup
+        autoSave, dataBackup, selectedAvatar
     ]);
     
     // Function to save all changes
@@ -99,12 +167,32 @@ function Settings() {
             language,
             primaryColor,
             autoSave,
-            dataBackup
+            dataBackup,
+            selectedAvatar
         };
         
+        // Clear any existing autosave timer when manually saving
+        if (autosaveTimerRef.current) {
+            clearTimeout(autosaveTimerRef.current);
+            autosaveTimerRef.current = null;
+        }
+        
+        setAutosaveActive(false);
         setProfileUpdated(true);
         setHasChanges(false);
         setTimeout(() => setProfileUpdated(false), 3000);
+    };
+    
+    // Toggle avatar selector
+    const toggleAvatarSelector = () => {
+        setShowAvatarSelector(!showAvatarSelector);
+    };
+    
+    // Handle avatar selection
+    const handleAvatarSelect = (avatar) => {
+        setSelectedAvatar(avatar);
+        setUserAvatar(avatar); // Update avatar in AuthContext
+        setShowAvatarSelector(false);
     };
 
     // Color options for theme customization
@@ -135,16 +223,32 @@ function Settings() {
             <div className="settings-section">
                 <h2>Profile</h2>
                 <div className="profile-info">
-                    <img src={MainImg} alt="Profile" className="profile-avatar" />
+                    <img src={selectedAvatar} alt="Profile" className="profile-avatar" />
                     <div className="profile-details">
                         <h3>{userName}</h3>
                         <p>{userEmail}</p>
                         <div className="profile-actions">
                             {/* <button className="settings-button">Edit Profile</button> */}
-                            <button className="settings-button secondary">Change Avatar</button>
+                            <button className="settings-button secondary" onClick={toggleAvatarSelector}>
+                                {showAvatarSelector ? 'Close' : 'Change Avatar'}
+                            </button>
                         </div>
                     </div>
                 </div>
+                
+                {showAvatarSelector && (
+                    <div className="avatar-images">
+                        {avatarOptions.map((avatar, index) => (
+                            <div 
+                                key={index} 
+                                className={`avatar-option ${selectedAvatar === avatar.src ? 'selected' : ''}`}
+                                onClick={() => handleAvatarSelect(avatar.src)}
+                            >
+                                <img src={avatar.src} alt={avatar.alt} />
+                            </div>
+                        ))}
+                    </div>
+                )}
                 <div className="settings-option">
                     <div className="option-label">
                         <FaUser className="icon" />
@@ -154,6 +258,7 @@ function Settings() {
                         </div>
                     </div>
                     <input 
+                        disabled
                         type="text" 
                         className="settings-input" 
                         value={userName} 
@@ -178,6 +283,9 @@ function Settings() {
                         style={{backgroundColor : "rgba(0,0,0,0.1", cursor: "not-allowed"}}
                     />
                 </div>
+
+
+                  {/* <div className='avatar-images'> </div> */}
             </div>
 
             {/* Appearance Section */}
@@ -283,7 +391,8 @@ function Settings() {
             {/* Data & Privacy Section */}
             <div className="settings-section">
                 <h2>Data & Privacy</h2>
-                <div className="settings-option">
+
+                {/* <div className="settings-option">
                     <div className="option-label">
                         <FaLock className="icon" />
                         <div>
@@ -292,7 +401,8 @@ function Settings() {
                         </div>
                     </div>
                     <button className="settings-button">Change Password</button>
-                </div>
+                </div> */}
+                
                 <div className="settings-option">
                     <div className="option-label">
                         <FaDatabase className="icon" />
@@ -301,7 +411,7 @@ function Settings() {
                             <p>Automatically save your changes</p>
                         </div>
                     </div>
-                    <label className="toggle-switch">
+                    <label className="toggle-switch disable-switch">
                         <input 
                             type="checkbox" 
                             checked={autoSave}
@@ -387,6 +497,7 @@ function Settings() {
                         <FaCheck style={{ marginRight: '5px' }} /> Save All Changes
                     </button>
                     {profileUpdated && <span className="profile-updated-message">Settings updated successfully!</span>}
+                    {autosaveActive && <span className="autosave-active-message">autosaved in 2 minutes </span>}
                 </div>
             </div>
         </div>

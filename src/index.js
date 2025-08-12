@@ -18,7 +18,6 @@ root.render(
           {/* Public route for password reset that doesn't require authentication */}
           <Route path="/reset-password" element={<PasswordResetHandler />} />
           
-          {/* All other routes */}
           <Route path="*" element={
             isAuthenticated ? (
               <LoaderProvider>

@@ -1082,7 +1082,7 @@ td {
   top: 0;
   right: 0;
   z-index: 9999;
-  pointer-events: none; /* Allow clicks to pass through the container */
+  pointer-events: none; 
   width: 100%;
 }
 
@@ -1091,7 +1091,7 @@ td {
   top: 10px;
   right: -400px;
   height: 40px;
-  width: 300px;
+  min-width: 350px;
   border-radius: 6px;
   display: flex;
   justify-content: space-between;
@@ -1101,11 +1101,10 @@ td {
   font-weight: 600;
   animation: slide-in 0.8s ease-in-out forwards;
   padding-bottom: 6px;
-  z-index: 9999; /* Increased z-index to ensure it stays on top of all elements */
-  pointer-events: auto; /* Re-enable pointer events for the alert box */
+  z-index: 9999; 
+  pointer-events: auto; 
 }
 
-/* Colors for Different Types */
 .success {
   background-color: #77de7b;
   border: 1px solid #388e3c;

@@ -27,7 +27,7 @@ const PasswordResetHandler = () => {
     const code = queryParams.get('oobCode');
     
     if (!code) {
-      setError('Invalid password reset link. Please request a new one.');
+      setError('Invalid password reset link, request a new one.');
       setIsVerifying(false);
       return;
     }
@@ -42,7 +42,7 @@ const PasswordResetHandler = () => {
       })
       .catch((error) => {
         console.error('Error verifying reset code:', error);
-        setError('This password reset link is invalid or has expired. Please request a new one.');
+        setError('This password reset link is invalid or has expired. request a new one.');
         setIsVerifying(false);
       });
   }, [location, auth]);

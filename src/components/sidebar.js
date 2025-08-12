@@ -1,6 +1,4 @@
 import '../styles/sideBar.css';
-import MainImg from '../images/profile.png';
-import HanuJi from '../images/profile.png';
 import { FaAngleDown, FaAngleUp, FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 import { FaGear } from "react-icons/fa6";
 import { FaLayerGroup } from 'react-icons/fa';
@@ -31,7 +29,7 @@ function SideBar() {
     const { markDataLoaded, setContentReady } = useGlobalLoader();
     
     // Get current user from auth context
-    const { currentUser } = useAuth();
+    const { currentUser, userAvatar } = useAuth();
     
     //ref for the profile dropdown container
     const profileDropdownRef = useRef(null);
@@ -108,7 +106,7 @@ function SideBar() {
                     setshowListsUsers(showListsUsers === 1 ? 0 : 1);
                 }}>
                 <div className='box'>
-                    <img src={MainImg} alt='' />
+                    <img src={userAvatar} alt='' />
                     <span>
                         <p>{currentUser?.displayName || 'User Profile'}
                             {
@@ -133,7 +131,7 @@ function SideBar() {
                 {showListsUsers === 1 && (
                     <div className='userLists'>
                         <div className='box'>
-                            <img src={HanuJi} alt='' />
+                            <img src={userAvatar} alt='' />
                             <span>
                                 <p>{currentUser?.displayName || 'User Profile'}</p>
                                 <p>{currentUser?.email || 'Not signed in'}</p>

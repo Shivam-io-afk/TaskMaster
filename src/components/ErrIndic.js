@@ -34,10 +34,10 @@ function ShowAlert({ type = "error", message = "Something went wrong!" }) {
             <FaX className="icns" />
 
             
-{/* <ShowAlert type="success" message="Success! Your action was completed." />
-<ShowAlert type="info" message="Info: This is an important update." />
-<ShowAlert type="warning" message="Warning! Check your input again." />
-<ShowAlert type="error" message="Error! Something went wrong." /> */}
+        {/* <ShowAlert type="success" message="Success! Your action was completed." />
+        <ShowAlert type="info" message="Info: This is an important update." />
+        <ShowAlert type="warning" message="Warning! Check your input again." />
+        <ShowAlert type="error" message="Error! Something went wrong." /> */}
         </div>
     );
 }

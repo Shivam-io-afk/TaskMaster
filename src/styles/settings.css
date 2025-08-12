@@ -65,6 +65,44 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
+
+.avatar-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+    padding: 15px;
+    background-color: var(--bg-light);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.avatar-option {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.avatar-option:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-option.selected {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+.avatar-option img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .settings-section h2 {
     font-family: var(--font1);
     font-weight: 500;
@@ -125,6 +163,10 @@
     opacity: 0;
     width: 0;
     height: 0;
+}
+
+.disable-switch{
+    opacity: 0.4;
 }
 
 .toggle-slider {
@@ -275,6 +317,14 @@ input:checked + .toggle-slider:before {
     font-size: 14px;
     margin-left: 10px;
     animation: fadeIn 0.3s ease-in;
+}
+
+.autosave-active-message {
+    color: #ff9800;
+    font-family: var(--font2);
+    font-size: 14px;
+    margin-left: 10px;
+    animation: pulse 2s infinite;
 }
 
 @keyframes fadeIn {
